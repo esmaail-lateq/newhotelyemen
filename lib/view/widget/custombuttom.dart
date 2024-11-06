@@ -7,12 +7,17 @@ class CustomButtom extends StatelessWidget {
 
   final String titel;
 
-  const CustomButtom({super.key, this.onPressed, required this.titel});
+  const CustomButtom({super.key, required this.onPressed, required this.titel});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(onPressed: onPressed,
-    child: Text(titel,style:TextStyle(color:AppColors.text1,fontWeight: FontWeight.bold,fontSize: 16) ,),
+    return MaterialButton(
+      onPressed: onPressed,
+      child: Text(
+        titel,
+        style: TextStyle(
+            color: AppColors.text1, fontWeight: FontWeight.bold, fontSize: 16),
+      ),
     );
     // ElevatedButton(
     //   clipBehavior: Clip.none,

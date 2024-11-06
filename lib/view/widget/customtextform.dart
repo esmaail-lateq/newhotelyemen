@@ -41,6 +41,7 @@ class CustomTextForm extends StatelessWidget {
           Expanded(
             child: TextFormField(
 
+
               validator: validator,
 
               controller: mycontroller,

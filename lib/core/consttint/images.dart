@@ -8,5 +8,13 @@ static String Imlogo= "$rootImage/start_display@4x.png";
 
 
   //animation
-static String Anlogin="$rootanimation/login.json";
+  //Auth
+  static String Anlogin="$rootanimation/login.json";
+  static String Ansignup="$rootanimation/sign-up.json";
+  static String VerfiyEmail="$rootanimation/Animation - 1730851207675.json";
+
+  //ForgetPassword
+  static String ResetPssword="$rootanimation/reset_password.json";
+  static String Success="$rootanimation/successful-mark.json";
+
 }

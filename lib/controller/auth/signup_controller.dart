@@ -4,16 +4,18 @@ import 'package:get/get.dart';
 abstract class SignUpController extends GetxController{
   showPassword();
   signup();
+
 }
 
 class SignUpControllerImp extends SignUpController{
+  GlobalKey<FormState>formstate=GlobalKey();
   late TextEditingController username;
   late TextEditingController email;
   late TextEditingController phone;
   late TextEditingController password;
   late TextEditingController conformpassword;
 
-  GlobalKey<FormState>formstate=GlobalKey();
+
 
   bool ispassword = true;
   bool ispassword2 = true;
@@ -34,12 +36,15 @@ class SignUpControllerImp extends SignUpController{
   @override
   signup() {
     if(formstate.currentState!.validate()){
-      print("notvales");
+      Get.toNamed("/verifyEmail" , arguments:{
+        "email":email.text,
+      });
     }
     else{
-      print("notvales");
+      print("not vaild" );
     }
   }
+
 
   @override
   void onInit() {
@@ -48,6 +53,7 @@ class SignUpControllerImp extends SignUpController{
     email=TextEditingController();
     password=TextEditingController();
     conformpassword=TextEditingController();
+
     super.onInit();
   }
 
@@ -60,7 +66,5 @@ class SignUpControllerImp extends SignUpController{
     conformpassword.dispose();
     super.dispose();
   }
-
-
 
 }

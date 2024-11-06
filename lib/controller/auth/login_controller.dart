@@ -18,7 +18,16 @@ bool ispassword = true;
     update();
   }
 
-@override
+ @override
+ login() {
+   if(formstate.currentState!.validate()){
+
+   }
+ }
+
+
+
+ @override
   void onInit() {
 email=TextEditingController();
 password=TextEditingController();
@@ -32,11 +41,5 @@ password.dispose();
     super.dispose();
   }
 
-  @override
-  login() {
-   if(formstate.currentState!.validate()){
-
-   }
-  }
 
 }

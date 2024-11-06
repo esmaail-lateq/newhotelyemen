@@ -33,7 +33,7 @@ class SignUp extends StatelessWidget {
                     children: [
                       SizedBox(height: 16),
                       Lottie.asset(
-                        AppImages.Anlogin,
+                        AppImages.Ansignup,
                         repeat: true,
                         reverse: true,
                         width: 300,
@@ -113,16 +113,22 @@ class SignUp extends StatelessWidget {
 
                       Semantics(
                         label: "Password",
+
                         child: CustomTextForm(
                           icon: Icons.lock,
                           mycontroller: controller.conformpassword,
                           keyboardType: TextInputType.text,
                           label: ' Password',
-                          validator: (val) {
-                            if(val != controller.password){
-                                return ' كلمة السر غير متطابقة ';
-                            };
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'يرجى تأكيد كلمة المرور';
+                            } else if (value != controller.password.text) {
+                              return 'كلمتا المرور غير متطابقتين';
+                            }
+                            return null;
+
                           },
+
                           isPassword: controller.ispassword2,
                           chingpassword: () {
                             controller.showPassword2();
@@ -152,6 +158,9 @@ class SignUp extends StatelessWidget {
                             style: TextStyle(color: AppColors.text2, fontSize: 14),
                           ),
                           InkWell(
+                            onTap: (){
+                              Get.offAllNamed("/login");
+                            },
                             child: Text(
                               "Login",
                               style: TextStyle(

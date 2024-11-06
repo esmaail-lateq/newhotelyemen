@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:lottie/lottie.dart';
 import 'package:newhotelyemeni/controller/auth/login_controller.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
@@ -50,9 +49,8 @@ class Login extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.only(left: 50, right: 50.0),
                     width: 10,
-                    child: Divider(color: Colors.cyanAccent),
+                    child: Divider(color: AppColors.text1),
                   ),
-
                   const SizedBox(height: 16.0),
                   Semantics(
                     label: "Email",
@@ -62,7 +60,7 @@ class Login extends StatelessWidget {
                       keyboardType: TextInputType.emailAddress,
                       label: ' Email Addrees',
                       validator: (val) {
-                        return  validInput(val!, 4, 50, "username");
+                        return validInput(val!, 4, 50, "username");
                       },
                     ),
                   ),
@@ -74,7 +72,9 @@ class Login extends StatelessWidget {
                       keyboardType: TextInputType.text,
                       label: ' Password',
                       validator: (val) {
-                        return validInput(val!, 8, 50, "password");
+                        if (val!.isEmpty) {
+                          return "يجب ان تملى الحقل";
+                        }
                       },
                       isPassword: controller.ispassword,
                       chingpassword: () {
@@ -93,7 +93,6 @@ class Login extends StatelessWidget {
                     },
                     titel: 'Login',
                   ),
-
                   SizedBox(
                     height: 10,
                   ),
@@ -105,7 +104,7 @@ class Login extends StatelessWidget {
                         style: TextStyle(color: AppColors.text2, fontSize: 14),
                       ),
                       InkWell(
-                        onTap: (){
+                        onTap: () {
                           Get.toNamed("/signup");
                         },
                         child: Text(
@@ -118,8 +117,6 @@ class Login extends StatelessWidget {
                       )
                     ],
                   )
-
-
                 ],
               ),
             ),
