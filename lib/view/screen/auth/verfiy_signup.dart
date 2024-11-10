@@ -60,11 +60,13 @@ class VerifySignup extends StatelessWidget {
                     fieldWidth: 50,
                     borderRadius: BorderRadius.circular(30),
                     keyboardType: TextInputType.number,
+
                     numberOfFields: 5,
                     //set to true to show as box or false to show as dash
                     showFieldAsBox: true,
                     //runs when a code is typed in
                     onCodeChanged: (String code) {
+
                       //handle validation or checks here
                     },
                     //runs when every textfield is filled

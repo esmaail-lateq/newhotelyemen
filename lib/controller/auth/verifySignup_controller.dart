@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 
@@ -17,7 +18,17 @@ class verifyemailControllerAuthImp extends verifyemailControllerAuth{
       Get.offAllNamed("/successEmail");
     }
     else{
-      Get.defaultDialog(title: "Error" , middleText: "This verifycode is false again tray write verifycode",);
+      Get.dialog(AlertDialog(
+        icon:Icon(Icons.error_outline,color: Colors.red,size: 75,),
+        content: Text("This verifycode is false again tray write verifycode"),
+        actions: [
+          MaterialButton(onPressed: (){
+            Get.back();
+          },child: Icon(Icons.close),color: Colors.redAccent,)
+        ],
+
+      ));
+      // Get.defaultDialog(title: "Error" , middleText: "This verifycode is false again tray write verifycode",);
     }
   }
 
