@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
 import 'package:newhotelyemeni/rout.dart';
-import 'package:newhotelyemeni/view/screen/auth/success_signup.dart';
-import 'package:newhotelyemeni/view/screen/auth/verfiy_signup.dart';
-
+import 'package:newhotelyemeni/view/screen/hotelsdetails.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -36,7 +34,7 @@ class MyApp extends StatelessWidget {
           textTheme: ButtonTextTheme.primary,
         ),
       ),
-      // home: SuccessSignup(),
+      home: HotelsDetails(),
       getPages: getPages,
     );
   }
