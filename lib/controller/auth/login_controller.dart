@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 abstract class LoginController extends GetxController{
  showPassword();
  login();
+ forgetpassword();
 }
 
 class LoginControllerImp extends LoginController{
@@ -17,6 +18,12 @@ bool ispassword = true;
     ispassword= ispassword==true?false:true;
     update();
   }
+
+
+ @override
+ forgetpassword() {
+    Get.toNamed("/checkPassword");
+ }
 
  @override
  login() {
@@ -40,6 +47,8 @@ email.dispose();
 password.dispose();
     super.dispose();
   }
+
+
 
 
 }

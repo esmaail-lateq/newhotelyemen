@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
 import 'package:newhotelyemeni/rout.dart';
+import 'package:newhotelyemeni/view/screen/aboutscreen.dart';
 import 'package:newhotelyemeni/view/screen/hotelsdetails.dart';
+
+import 'controller/homescreen_controller.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -34,7 +37,7 @@ class MyApp extends StatelessWidget {
           textTheme: ButtonTextTheme.primary,
         ),
       ),
-      home: HotelsDetails(),
+      // home: AboutScreen(),
       getPages: getPages,
     );
   }

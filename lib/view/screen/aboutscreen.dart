@@ -127,7 +127,7 @@ class AboutScreen extends StatelessWidget {
                       title: GestureDetector(
                         onTap: () => ('+96770107908'),
                         child: Text(
-                          '+967 770107908',
+                          '+967 770107908 - 773166009',
                           style: TextStyle(
                             fontSize: 15.0,
                             color: Colors.blue,

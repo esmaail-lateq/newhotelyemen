@@ -87,6 +87,16 @@ class Login extends StatelessWidget {
                   SizedBox(
                     height: 10,
                   ),
+                  InkWell(
+                    onTap: (){
+                      controller.forgetpassword();
+                    },
+                    child: Text("Forgot Password!", style: TextStyle(color: Colors.white)),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  
                   CustomButtom(
                     onPressed: () {
                       controller.login();

@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'aboutscreen.dart';
 import 'auth/login.dart';
 
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -13,7 +12,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  SafeArea(
+    return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           title: Text('change here!!'),
@@ -32,12 +31,8 @@ class HomeScreen extends StatelessWidget {
           // //     ? [_buildSearchIcon()] // Conditionally show search icon
           // //     : null,
         ),
-      
-      
-        drawer:
-        Drawer(
-          child:
-          ListView(
+        drawer: Drawer(
+          child: ListView(
             padding: EdgeInsets.zero,
             children: <Widget>[
               const DrawerHeader(
@@ -61,24 +56,25 @@ class HomeScreen extends StatelessWidget {
                 title: Text('إدارة الفنادق'),
                 onTap: () {
                   Scaffold.of(context).openDrawer();
-                  Get.to(()=>Login());
+                  Get.to(() => Login());
                 },
               ),
               ListTile(
-                leading: Icon(
-                  Icons.developer_board_rounded,
-                  color: Colors.teal,
-                  semanticLabel: 'This applicatoin work was done by limits Group company ',
-                ),
-                title: const Text('برمجة وتطوير'),
-                onTap: () {
-                  Get.to(()=>AboutScreen());
-                }
-      ),
+                  leading: Icon(
+                    Icons.developer_board_rounded,
+                    color: Colors.teal,
+                    semanticLabel:
+                        'This applicatoin work was done by limits Group company ',
+                  ),
+                  title: const Text('برمجة وتطوير'),
+                  onTap: () {
+                    Get.to(() => AboutScreen());
+                  }),
+            ],
+          ),
+        ),
 
-      ],
       ),
-      ),
-      ),
-    );}
+    );
   }
+}
