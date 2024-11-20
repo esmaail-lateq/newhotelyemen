@@ -40,7 +40,7 @@ class SignUp extends StatelessWidget {
                         height: 300,
                       ),
                       Text(
-                        'SignUp to Yemeni Hotel',
+                        '8'.tr,
                         style: TextStyle(
                           color: AppColors.text1,
                           fontWeight: FontWeight.bold,
@@ -57,48 +57,48 @@ class SignUp extends StatelessWidget {
 
                       const SizedBox(height: 16.0),
                       Semantics(
-                        label: "UserName",
+                        label: "10".tr,
                         child: CustomTextForm(
                           icon: Icons.person,
                           mycontroller: controller.username,
                           keyboardType: TextInputType.emailAddress,
-                          label: ' UserName',
+                          label: ' 10'.tr,
                           validator: (val) {
                             return  validInput(val!, 4, 50, "username");
                           },
                         ),
                       ),
                       Semantics(
-                        label: "email",
+                        label: "9".tr,
                         child: CustomTextForm(
                           icon: Icons.email,
                           mycontroller: controller.email,
                           keyboardType: TextInputType.emailAddress,
-                          label: ' Email',
+                          label: ' 9'.tr,
                           validator: (val) {
                             return validInput(val!, 4, 50, "email");
                           },
                         ),
                       ),
                       Semantics(
-                        label: "phone",
+                        label: "11".tr,
                         child: CustomTextForm(
                           icon: Icons.phone,
                           mycontroller: controller.phone,
                           keyboardType: TextInputType.phone,
-                          label: ' phone',
+                          label: ' 11'.tr,
                           validator: (val) {
                             return validInput(val!, 4, 50, "phone");
                           },
                         ),
                       ),
                       Semantics(
-                        label: "password",
+                        label: "12".tr,
                         child: CustomTextForm(
                           icon: Icons.lock,
                           mycontroller: controller.password,
                           keyboardType: TextInputType.text,
-                          label: ' Password',
+                          label: ' 12'.tr,
                           validator: (val) {
                             return validInput(val!, 8, 50, "password");
                           },
@@ -112,13 +112,13 @@ class SignUp extends StatelessWidget {
                       ),
 
                       Semantics(
-                        label: "Password",
+                        label: "13".tr,
 
                         child: CustomTextForm(
                           icon: Icons.lock,
                           mycontroller: controller.conformpassword,
                           keyboardType: TextInputType.text,
-                          label: ' Password',
+                          label: ' 13'.tr,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'يرجى تأكيد كلمة المرور';
@@ -144,7 +144,7 @@ class SignUp extends StatelessWidget {
                         onPressed: () {
                           controller.signup();
                         },
-                        titel: 'Signup',
+                        titel: '3'.tr,
                       ),
 
                       SizedBox(
@@ -154,7 +154,7 @@ class SignUp extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "I Have a Count ",
+                            "14 ".tr,
                             style: TextStyle(color: AppColors.text2, fontSize: 14),
                           ),
                           InkWell(
@@ -162,7 +162,7 @@ class SignUp extends StatelessWidget {
                               Get.offAllNamed("/login");
                             },
                             child: Text(
-                              "Login",
+                              "2".tr,
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,

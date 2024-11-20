@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
+import 'package:newhotelyemeni/core/locallzition/tranzlation.dart';
+import 'package:newhotelyemeni/core/locallzition/tranzlation_controller.dart';
+import 'package:newhotelyemeni/core/servesies/myserves.dart';
 import 'package:newhotelyemeni/rout.dart';
 import 'package:newhotelyemeni/view/screen/aboutscreen.dart';
 import 'package:newhotelyemeni/view/screen/hotelsdetails.dart';
 
 import 'controller/homescreen_controller.dart';
-void main() {
+void main()async {
+WidgetsFlutterBinding.ensureInitialized();
+await initialServers();
   runApp(const MyApp());
 }
 
@@ -16,7 +21,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+   LocalController controller= Get.put(LocalController());
     return GetMaterialApp(
+      translations: MyTranzlation(),
+      locale: controller.langage,
       debugShowCheckedModeBanner: false,
       title: 'YemenHotel',
       theme: ThemeData(

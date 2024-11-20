@@ -37,7 +37,7 @@ class Login extends StatelessWidget {
                     height: 300,
                   ),
                   Text(
-                    'Login to Yemeni Hotel',
+                    '4'.tr,
                     style: TextStyle(
                       color: Colors.cyanAccent,
                       fontWeight: FontWeight.bold,
@@ -91,7 +91,7 @@ class Login extends StatelessWidget {
                     onTap: (){
                       controller.forgetpassword();
                     },
-                    child: Text("Forgot Password!", style: TextStyle(color: Colors.white)),
+                    child: Text("5".tr, style: TextStyle(color: Colors.white)),
                   ),
                   SizedBox(
                     height: 10,
@@ -101,7 +101,7 @@ class Login extends StatelessWidget {
                     onPressed: () {
                       controller.login();
                     },
-                    titel: 'Login',
+                    titel: '2'.tr,
                   ),
                   SizedBox(
                     height: 10,
@@ -110,7 +110,7 @@ class Login extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "I Don't Have a Count ",
+                        "7".tr,
                         style: TextStyle(color: AppColors.text2, fontSize: 14),
                       ),
                       InkWell(
@@ -118,7 +118,7 @@ class Login extends StatelessWidget {
                           Get.toNamed("/signup");
                         },
                         child: Text(
-                          "SignUP",
+                          "3".tr,
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
