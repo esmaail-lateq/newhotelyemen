@@ -3,6 +3,7 @@ import 'package:newhotelyemeni/view/screen/auth/forgetpassword/checkpassword.dar
 import 'package:newhotelyemeni/view/screen/auth/forgetpassword/resetpassword.dart';
 import 'package:newhotelyemeni/view/screen/auth/forgetpassword/verify_Repassword.dart';
 import 'package:newhotelyemeni/view/screen/auth/login.dart';
+import 'package:newhotelyemeni/view/screen/auth/onboarder_auth/onboader_screen.dart';
 import 'package:newhotelyemeni/view/screen/auth/signup.dart';
 import 'package:newhotelyemeni/view/screen/auth/success_signup.dart';
 import 'package:newhotelyemeni/view/screen/auth/verfiy_signup.dart';
@@ -20,6 +21,7 @@ List<GetPage<dynamic>>? getPages=[
 
 
   //Auth
+  GetPage(name: "/onboarder", page:()=> OnboaderScreen()),
   GetPage(name: "/login", page:()=> Login()),
   GetPage(name: "/signup", page:()=> SignUp()),
   GetPage(name: "/verifyEmail", page:()=> VerifySignup()),

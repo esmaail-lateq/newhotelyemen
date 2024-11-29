@@ -8,7 +8,7 @@ class WellcomeControllerImp extends WellcomeController{
   @override
   gotohome() {
 Future.delayed(Duration(seconds: 5) , (){
-  Get.offNamed("/login");
+  Get.offNamed("/onboarder");
 });
   }
 

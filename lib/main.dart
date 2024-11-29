@@ -7,6 +7,7 @@ import 'package:newhotelyemeni/core/servesies/myserves.dart';
 import 'package:newhotelyemeni/rout.dart';
 import 'package:newhotelyemeni/view/screen/aboutscreen.dart';
 import 'package:newhotelyemeni/view/screen/hotelsdetails.dart';
+import 'package:newhotelyemeni/view/screen/setings/language.dart';
 
 import 'controller/homescreen_controller.dart';
 void main()async {
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'YemenHotel',
       theme: ThemeData(
+        primarySwatch: Colors.blue,
         primaryColor: AppColors.background,
         hintColor: Colors.amber[600],
         scaffoldBackgroundColor: AppColors.primaryColor,
@@ -45,7 +47,7 @@ class MyApp extends StatelessWidget {
           textTheme: ButtonTextTheme.primary,
         ),
       ),
-      // home: AboutScreen(),
+      // home: Language(),
       getPages: getPages,
     );
   }

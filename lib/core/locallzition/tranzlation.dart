@@ -36,7 +36,7 @@ class MyTranzlation extends Translations{
       "5":"Forgot Password!",
       "6":"Continue",
       "7":"I Don't Have a Count",
-       "8":"SignUp to Yemeni Hotel",
+      "8":"SignUp to Yemeni Hotel",
       "14":"I Have a Count",
 
       // Languagr in the forms
