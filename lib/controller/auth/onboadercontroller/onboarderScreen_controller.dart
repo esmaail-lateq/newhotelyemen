@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart';
+import 'package:newhotelyemeni/controller/auth/signup_controller.dart';
 
 class OnboarderScreenController extends GetxController{
 
 late PageController pageController ;
 double process = 0.0;
 
+SignUpControllerImp controllerSign = Get.put(SignUpControllerImp());
+
+backPage(){
+  if(pageController.page == 1){
+    process--;
+    pageController.animateToPage(0, duration: Duration(milliseconds: 400), curve: Curves.ease);
+  }
+}
 changePage(){
   if(pageController.page == 0){
     process++;

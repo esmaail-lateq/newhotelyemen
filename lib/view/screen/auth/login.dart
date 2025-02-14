@@ -15,107 +15,108 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(LoginControllerImp());
-    return GetBuilder<LoginControllerImp>(
-      builder: (controller) =>Padding(
+    return SingleChildScrollView(
+        child: GetBuilder<LoginControllerImp>(
+       builder: (controller) => Padding(
         padding: const EdgeInsets.all(24),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               FadeInUp(
-                duration: Duration(milliseconds: 1000),
+                  duration: Duration(milliseconds: 1000),
                   child: Text(
-                'Login to Yemeni Hotel',
-                style: const TextStyle(
-                  color: Color(0xFF333333), // لون غامق للنص
-                  fontWeight: FontWeight.bold,
-                  fontSize: 26,
-                ),
-              ) ),
+                    'Login to Yemeni Hotel',
+                    style: const TextStyle(
+                      color: Color(0xFF333333), // لون غامق للنص
+                      fontWeight: FontWeight.bold,
+                      fontSize: 26,
+                    ),
+                  )),
               // العنوان الرئيسي
               const SizedBox(height: 5),
 
               // نموذج الإدخال
               Form(
-                key: controller.formstate,
-                child: FadeInUp(
-                  duration: Duration(milliseconds: 1300),
-                  child: Column(
-                  children: [
-                    // حقل البريد الإلكتروني
-                    CustomTextForm(
-                      icon: Icons.email,
-                      mycontroller: controller.email,
-                      keyboardType: TextInputType.emailAddress,
-                      label: 'Email Address',
-                      validator: (val) {
-                        return validInput(val!, 4, 50, "username");
-                      },
-                      // لون الإطار
-                    ),
-                    // حقل كلمة المرور
-                    CustomTextForm(
-                      icon: Icons.lock,
-                      mycontroller: controller.password,
-                      keyboardType: TextInputType.text,
-                      label: 'Password',
-                      validator: (val) {
-                        if (val!.isEmpty) {
-                          return "This field is required";
-                        }
-                      },
-
-                      isPassword: controller.ispassword,
-                      chingpassword: () {
-                        controller.showPassword();
-                      },
-                      iconpassword: Icons.visibility,
-                      iconshowpassword: Icons.visibility_off,
-                    ),
-                  ],
-                ),)
-              ),
-
-              const SizedBox(height: 5),
-              FadeInUp(
-                  duration:
-                  Duration(milliseconds: 1500),
-                  child: InkWell(
-                    onTap: () {
-                    },
-                    child: Text(
-                     "ForgetPassword!",
-                      style: TextStyle(
-                          color: Colors.grey.shade600),
+                  key: controller.formstate,
+                  child: FadeInUp(
+                    duration: Duration(milliseconds: 1300),
+                    child: Column(
+                      children: [
+                        // حقل البريد الإلكتروني
+                        CustomTextForm(
+                          icon: Icons.email,
+                          mycontroller: controller.email,
+                          keyboardType: TextInputType.emailAddress,
+                          label: 'Phone OR UserName',
+                          validator: (val) {
+                            return validInput(val!, 4, 50, "username");
+                          },
+                          // لون الإطار
+                        ),
+                        // حقل كلمة المرور
+                        CustomTextForm(
+                          icon: Icons.lock,
+                          mycontroller: controller.password,
+                          keyboardType: TextInputType.text,
+                          label: 'Password',
+                          validator: (val) {
+                            if (val!.isEmpty) {
+                              return "This field is required";
+                            }
+                          },
+                          isPassword: controller.ispassword,
+                          chingpassword: () {
+                            controller.showPassword();
+                          },
+                          iconpassword: Icons.visibility,
+                          iconshowpassword: Icons.visibility_off,
+                        ),
+                      ],
                     ),
                   )),
-              SizedBox(height: 10,),
+
+              const SizedBox(height: 10),
+              FadeInUp(
+                  duration: Duration(milliseconds: 1500),
+                  child: InkWell(
+                    onTap: () {
+                      Get.toNamed("/checkPassword");
+                    },
+                    child: Text(
+                      "ForgetPassword!",
+                      style: TextStyle(color: Colors.grey.shade900),
+                    ),
+                  )),
+              SizedBox(
+                height: 10,
+              ),
               // زر تسجيل الدخول
               FadeInUp(
                 duration: Duration(milliseconds: 1800),
-                child: SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    backgroundColor: const Color(0xFF0A99FF), // الأزرق المميز
-                  ),
-                  onPressed: () {
-                    // منطق تسجيل الدخول
-                  },
-                  child: const Text(
-                    "Login",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
+                child: Container(
+                  margin: EdgeInsets.only(left: 70, right: 70),
+                  padding: EdgeInsets.symmetric(horizontal: 50),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      gradient: LinearGradient(
+                          begin: Alignment.bottomLeft,
+                          end: Alignment.topRight,
+                          stops: [
+                            0.2,
+                            0.9
+                          ],
+                          colors: [
+                            Color.fromARGB(255, 98, 181, 225),
+                            Color.fromARGB(255, 102, 120, 143),
+                          ])),
+                  child: CustomButtom(
+                      onPressed: () {
+                        controller.login();
+                      },
+                      titel: "Login"),
                 ),
-              ),)
+              )
 
               // const SizedBox(height: 16),
               //
@@ -145,8 +146,8 @@ class Login extends StatelessWidget {
             ],
           ),
         ),
-      ) ,
-    );
+      ),
+    ));
   }
 }
 

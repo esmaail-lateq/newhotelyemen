@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
@@ -14,71 +15,106 @@ class VerifyResatePassword extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(VerifyRsatePasswordController());
     return Scaffold(
-      body:  GetBuilder<VerifyRsatePasswordController>(builder: (controller) => Container(
-        height: 20000,
-        color: AppColors.primaryColor,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  SizedBox(height: 16),
-                  Lottie.asset(
-                    AppImages.Ansignup,
-                    repeat: true,
-                    reverse: true,
-                    width: 300,
-                    height: 300,
+      body: GetBuilder<VerifyRsatePasswordController>(
+        builder: (controller) => Container(
+          child: SingleChildScrollView(
+            child: Container(
+              padding: const EdgeInsets.all(1.0),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(begin: Alignment.topCenter, colors: [
+                Colors.blue.shade600,
+                Colors.blue.shade400,
+                Colors.blue.shade200
+              ])),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  SizedBox(
+                    height: 80,
                   ),
-                  Text(
-                    'VerifyCode to Email',
-                    style: TextStyle(
-                      color: Colors.cyanAccent,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
+                  Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        FadeInUp(
+                            duration: Duration(milliseconds: 1000),
+                            child: Text(
+                              "${controller.email}",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 40),
+                            )),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        FadeInUp(
+                            duration: Duration(milliseconds: 1300),
+                            child: Text(
+                              "verification code".tr,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 18),
+                            )),
+                      ],
                     ),
-                    textAlign: TextAlign.center,
-                    semanticsLabel: 'Login to Yemen Hotel Screen',
                   ),
+                  SizedBox(height: 20),
                   Container(
-                    padding: EdgeInsets.only(left: 50, right: 50.0),
-                    width: 10,
-                    child: Divider(color: AppColors.text1),
+                    height: 2000,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(60),
+                            topRight: Radius.circular(60))),
+                    child: Padding(
+                      padding: EdgeInsets.all(30),
+                      child: Column(
+                        children: <Widget>[
+                          FadeInUp(
+                              duration: Duration(milliseconds: 1300),
+                              child: Text(
+                                "Enter the verification code that was sent to your phone  ",
+                                style: TextStyle(
+                                  color: Color(0xFF333333),
+                                ),
+                              )),
+                          SizedBox(
+                            height: 40,
+                          ),
+                          FadeInUp(
+                            duration: Duration(milliseconds: 1400),
+                            child: OtpTextField(
+                              cursorColor: Colors.blue,
+                              focusedBorderColor: Colors.indigo,
+                              textStyle: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFF333333)),
+                              fieldWidth: 50,
+                              borderRadius: BorderRadius.circular(30),
+                              keyboardType: TextInputType.number,
+                              numberOfFields: 5,
+                              //set to true to show as box or false to show as dash
+                              showFieldAsBox: true,
+                              //runs when a code is typed in
+                              onCodeChanged: (String code) {
+                                //handle validation or checks here
+                              },
+                              //runs when every textfield is filled
+                              onSubmit: (String verificationCode) {
+                                controller.gotoresetpassword(verificationCode);
+                              }, // end onSubmit
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  const SizedBox(height: 4.0),
-                  Text("${controller.email}", style: TextStyle(color: AppColors.text2 , fontSize: 18),),
-                  SizedBox(height:19.0 ,),
-                  OtpTextField(
-                    cursorColor: AppColors.primaryColor,
-                    focusedBorderColor: Colors.cyanAccent,
-                    textStyle:
-                    TextStyle(fontWeight: FontWeight.bold,color: AppColors.text3),
-                    fieldWidth: 50,
-                    borderRadius: BorderRadius.circular(30),
-                    keyboardType: TextInputType.number,
-
-                    numberOfFields: 5,
-                    //set to true to show as box or false to show as dash
-                    showFieldAsBox: true,
-                    //runs when a code is typed in
-                    onCodeChanged: (String code) {
-
-                      //handle validation or checks here
-                    },
-                    //runs when every textfield is filled
-                    onSubmit: (String verificationCode) {
-                      controller.gotoresetpassword(verificationCode);
-                    }, // end onSubmit
-                  ),
-
-                ]
+                ],
+              ),
             ),
           ),
         ),
-      ),),
-    )
-    ;
+      ),
+    );
   }
 }

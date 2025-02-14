@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:newhotelyemeni/controller/homescreen_controller.dart';
+import 'package:newhotelyemeni/core/consttint/links.dart';
+import 'package:newhotelyemeni/view/screen/homescreen/hotel_items.dart';
+import 'package:newhotelyemeni/view/widget/category_explor.dart';
 import 'package:newhotelyemeni/view/widget/fontandtext.dart';
 import 'package:newhotelyemeni/view/widget/elevatedbuttons.dart';
 import 'package:newhotelyemeni/view/screen/notifications_screen.dart';
@@ -18,34 +23,28 @@ class HomeScreen extends StatelessWidget {
   final userController = Get.put(UserController());
 
   final List<Map<String, dynamic>> cityData = [
-    {"id": "1", "name": "صنعاء", "icon": Icons.location_on},
-    {"id": "2", "name": "عدن", "icon": Icons.location_on},
-    {"id": "3", "name": "ذمار", "icon": Icons.location_on},
-    {"id": "4", "name": "تعز", "icon": Icons.location_on},
-    {"id": "5", "name": "الحديدة", "icon": Icons.location_on},
-    {"id": "6", "name": "إب", "icon": Icons.location_on},
+    {"id": "1", "name": "صنعاء", "street": "حدة","icon": Icons.location_on},
+    {"id": "2", "name": "عدن","street": "حدة", "icon": Icons.location_on},
+    {"id": "3", "name": "ذمار","street": "حدة", "icon": Icons.location_on},
+    {"id": "4", "name": "تعز","street": "حدة", "icon": Icons.location_on},
+    {"id": "5", "name": "الحديدة","street": "حدة", "icon": Icons.location_on},
+    {"id": "6", "name": "إب","street": "حدة", "icon": Icons.location_on},
   ];
 
-  final List<Map<String, dynamic>> servicesData = [
-    {"id": "1", "name": "مطعم", "icon": Icons.restaurant},
-    {"id": "2", "name": "مسبح", "icon": Icons.pool},
-    {"id": "3", "name": "واي فاي", "icon": Icons.wifi},
-    {"id": "4", "name": "موقف سيارات", "icon": Icons.local_parking},
-    {"id": "5", "name": "تكييف", "icon": Icons.ac_unit},
-    {"id": "6", "name": "خدمة الغرف", "icon": Icons.room_service},
-  ];
 
   @override
   Widget build(BuildContext context) {
     final textStyles = Get.find<CustomTextStyles>();
     final size = MediaQuery.of(context).size;
+    Get.put(HomeScreenController());
 
-    return SafeArea(
+    return GetBuilder<HomeScreenController>(builder: (controller) => SafeArea(
       child: Scaffold(
+
         backgroundColor: Colors.grey[100],
         appBar: AppBar(
+          systemOverlayStyle: SystemUiOverlayStyle.light,
           elevation: 0,
-          backgroundColor: Colors.transparent,
           leading: IconButton(
             icon: Icon(Icons.menu, color: Colors.black),
             onPressed: () {},
@@ -159,9 +158,9 @@ class HomeScreen extends StatelessWidget {
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 prefixIcon:
-                                    Icon(Icons.search, color: Colors.grey),
+                                Icon(Icons.search, color: Colors.grey),
                                 suffixIcon:
-                                    Icon(Icons.filter_list, color: Colors.grey),
+                                Icon(Icons.filter_list, color: Colors.grey),
                                 hintStyle: TextStyle(
                                   color: Colors.grey,
                                   fontSize: 15,
@@ -178,7 +177,7 @@ class HomeScreen extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.all(20),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         CategorySection(
                           title: "المدينة الأقرب اليك",
@@ -189,28 +188,47 @@ class HomeScreen extends StatelessWidget {
                             // Handle view all cities
                           },
                         ),
-                        SizedBox(height: 30),
-                        CategorySection(
-                          title: "الخدمات المتوفرة",
-                          items: servicesData,
-                          defaultIcon: Icons.room_service,
-                          showAllCities: false,
-                          onViewAllPressed: () {
-                            // Handle view all services
-                          },
+                        SizedBox(height: 10),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child:Text("فرز على حسب " ,style:textStyles.titleStyle() , ),
                         ),
+                        SizedBox(height: 10),
+                        Container(
+                          height: 100,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            // physics: NeverScrollableScrollPhysics(),
+                            // shrinkWrap: true,
+                              itemCount: controller.servicesData.length,
+                              itemBuilder: (context, index) =>CategoryExpelor(
+                                model: controller.servicesData[index],
+                                i: index+1,
+                              ),),
+
+                        ),
+
+                        // CategorySection(
+                        //   title: "الخدمات المتوفرة",
+                        //   items: servicesData,
+                        //   defaultIcon: Icons.room_service,
+                        //   showAllCities: false,
+                        //   onViewAllPressed: () {
+                        //     // Handle view all services
+                        //   },
+                        // ),
                         SizedBox(height: 30),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                'عرض الكل',
-                                style: TextStyle(color: Colors.blue),
-                              ),
-                            ),
-                            Text("الأعلى تقييماً",
+                            // TextButton(
+                            //   onPressed: () {},
+                            //   child: Text(
+                            //     'عرض الكل',
+                            //     style: TextStyle(color: Colors.blue),
+                            //   ),
+                            // ),
+                            Text(" عرض الكل",
                                 style: textStyles.titleStyle()),
                           ],
                         ),
@@ -219,37 +237,43 @@ class HomeScreen extends StatelessWidget {
                           height: 250,
                           child: ListView.builder(
                             scrollDirection: Axis.horizontal,
-                            itemCount: cityData.length,
+                            itemCount: controller.hoteldata.length,
                             itemBuilder: (context, index) {
-                              final items = cityData[index];
                               return Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
+                                MainAxisAlignment.spaceAround,
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      Get.to(() => HotelDetailsScreen(
-                                        hotel: {
-                                          'id': items['id'],
-                                          'name': 'فندق اليمن السعيد',
-                                          'location': 'صنعاء - شارع الزبيري',
-                                          'rating': 4.5,
-                                          'price': '120',
-                                          'description': 'يقع فندق اليمن السعيد في قلب العاصمة صنعاء، ويوفر إطلالات خلابة على المدينة القديمة. يتميز الفندق بموقعه الاستراتيجي وخدماته الراقية التي تلبي احتياجات النزلاء.',
-                                        },
-                                      ));
+
+                                        Get.to(HotelDetailsScreen(hotel: controller.hoteldata[index]),
+                                            arguments: {
+                                              "cateogry":controller.servicesData,
+                                              "hotelId":controller.hoteldata[index].hotelId
+                                            }
+                                            );
+
                                     },
                                     child: makeItem(
-                                      image: 'assets/images/hotelimg.jpg',
-                                      title: '${items['name']}',
+                                      image: controller.hoteldata[index].hotelImage,
+                                      title: '${controller.hoteldata[index].hotelNamear}',
+                                      location: '${controller.hoteldata[index].addressCuntry}',
+                                      city:'${controller.hoteldata[index].addressCity}' ,
+                                      street: '${controller.hoteldata[index].addressStreet}',
+                                      rating: controller.hoteldata[index].hotelRating
                                     ),
                                   ),
                                 ],
                               );
+
                             },
                           ),
                         ),
                         SizedBox(height: 20),
+                        if(controller.selectcate != null)
+                          HotelItems(),
+
+
                         // Text("حسب الخدمات", style: textStyles.titleStyle()),
                         // SizedBox(height: 20),
                         // SizedBox(
@@ -286,7 +310,7 @@ class HomeScreen extends StatelessWidget {
           },
         ),
       ),
-    );
+    ),);
   }
 
   Widget _buildAmenityItem(IconData icon, String label) {
@@ -301,8 +325,7 @@ class HomeScreen extends StatelessWidget {
       ],
     );
   }
-
-  Widget makeItem({image, title}) {
+  Widget makeItem({image, title, location, city,street,  rating}) {
     return AspectRatio(
       aspectRatio: 1 / 1,
       child: Container(
@@ -310,7 +333,7 @@ class HomeScreen extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           image: DecorationImage(
-            image: AssetImage(image),
+            image: NetworkImage("${AppLinks.rootImage}/hotel/$image"),
             fit: BoxFit.cover,
           ),
         ),
@@ -326,15 +349,103 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          child: Align(
-            alignment: Alignment.bottomLeft,
-            child: Text(
-              title,
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 5), // مسافة صغيرة بين العناصر
+             Row(
+               children: [
+                 Text(
+                   location,
+                   style: TextStyle(
+                     color: Colors.white70,
+                     fontSize: 16,
+                   ),
+                 ),
+                 Text(
+                   city,
+                   style: TextStyle(
+                     color: Colors.white70,
+                     fontSize: 16,
+                   ),
+                 ),
+                 Text(
+                   street,
+                   style: TextStyle(
+                     color: Colors.white70,
+                     fontSize: 16,
+                   ),
+                 )
+               ],
+             ),
+              SizedBox(height: 5), // مسافة صغيرة بين العناصر
+              Row(
+                children: [
+                  Icon(Icons.star, color: Colors.yellow, size: 18),
+                  Icon(Icons.star, color: Colors.yellow, size: 18),
+                  Icon(Icons.star, color: Colors.yellow, size: 18),
+                  Icon(Icons.star, color: Colors.yellow, size: 18),
+                  Icon(Icons.star_border, color: Colors.yellow, size: 18),
+                  SizedBox(width: 5),
+                  Text(
+                    rating.toString(),
+                    style: TextStyle(
+                      color: Colors.white70,
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
     );
   }
+
+
+// Widget makeItem({image, title}) {
+  //   return AspectRatio(
+  //     aspectRatio: 1 / 1,
+  //     child: Container(
+  //       margin: EdgeInsets.only(right: 15),
+  //       decoration: BoxDecoration(
+  //         borderRadius: BorderRadius.circular(20),
+  //         image: DecorationImage(
+  //           image: AssetImage(image),
+  //           fit: BoxFit.cover,
+  //         ),
+  //       ),
+  //       child: Container(
+  //         padding: EdgeInsets.all(20),
+  //         decoration: BoxDecoration(
+  //           borderRadius: BorderRadius.circular(20),
+  //           gradient: LinearGradient(
+  //             begin: Alignment.bottomRight,
+  //             colors: [
+  //               Colors.black.withOpacity(.8),
+  //               Colors.black.withOpacity(.2),
+  //             ],
+  //           ),
+  //         ),
+  //         child: Align(
+  //           alignment: Alignment.bottomLeft,
+  //           child: Text(
+  //             title,
+  //             style: TextStyle(color: Colors.white, fontSize: 20),
+  //           ),
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 }

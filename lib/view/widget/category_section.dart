@@ -29,13 +29,13 @@ class CategorySection extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TextButton(
-                onPressed: onViewAllPressed,
-                child: Text(
-                  'عرض الكل',
-                  style: TextStyle(color: Colors.blue),
-                ),
-              ),
+              // TextButton(
+              //   onPressed: onViewAllPressed,
+              //   child: Text(
+              //     'عرض الكل',
+              //     style: TextStyle(color: Colors.blue),
+              //   ),
+              // ),
               Text(title, style: textStyles.titleStyle()),
             ],
           ),
@@ -54,6 +54,7 @@ class CategorySection extends StatelessWidget {
                 final item = items[index];
                 return Padding(
                   padding: const EdgeInsets.only(right: 8),
+
                   child: CustomElevatedButton(
                     label: item['name'] ?? '',
                     icon: item['icon'] ?? defaultIcon,
@@ -73,6 +74,7 @@ class CategorySection extends StatelessWidget {
 
   Widget _buildExpandedGrid() {
     return Container(
+      height: 100,
       padding: EdgeInsets.symmetric(horizontal: 16),
       child: GridView.builder(
         shrinkWrap: true,
@@ -83,6 +85,7 @@ class CategorySection extends StatelessWidget {
           mainAxisSpacing: 10,
           childAspectRatio: 2.5,
         ),
+        // scrollDirection: Axis.horizontal,
         itemCount: items.length,
         itemBuilder: (context, index) {
           final item = items[index];

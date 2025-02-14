@@ -16,7 +16,7 @@ class CustomButtom extends StatelessWidget {
       child: Text(
         titel,
         style: TextStyle(
-            color: AppColors.text1, fontWeight: FontWeight.bold, fontSize: 16),
+            color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
       ),
     );
     // ElevatedButton(

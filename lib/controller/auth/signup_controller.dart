@@ -1,5 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:newhotelyemeni/core/class/statusRquest.dart';
+import 'package:newhotelyemeni/core/function/handling.dart';
+import 'package:newhotelyemeni/data/sours/remout/auth/signup_data.dart';
+
+import 'onboadercontroller/onboarderScreen_controller.dart';
 
 abstract class SignUpController extends GetxController{
   showPassword();
@@ -15,7 +20,8 @@ class SignUpControllerImp extends SignUpController{
   late TextEditingController password;
   late TextEditingController conformpassword;
 
-
+SignupData signupData = SignupData(Get.find());
+StatusRquest statusRquest = StatusRquest.nune;
 
   bool ispassword = true;
   bool ispassword2 = true;
@@ -34,11 +40,19 @@ class SignUpControllerImp extends SignUpController{
 
 
   @override
-  signup() {
+  signup()async {
     if(formstate.currentState!.validate()){
-      Get.toNamed("/verifyEmail" , arguments:{
-        "email":email.text,
-      });
+      var response= await signupData.postData(username.text, password.text, email.text, phone.text);
+      statusRquest =  handling(response);
+      if(statusRquest == StatusRquest.success){
+        if(response['"status'] == "success"){
+          Get.offAllNamed("/onboarder");
+        }
+        else if(response['"status'] == "finde"){
+          Get.defaultDialog(title: "Error" , middleText: "Phone Number Or Email Already Exists");
+        }
+      }
+
     }
     else{
       print("not vaild" );

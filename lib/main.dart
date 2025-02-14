@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
 import 'package:newhotelyemeni/core/locallzition/tranzlation.dart';
 import 'package:newhotelyemeni/core/locallzition/tranzlation_controller.dart';
+import 'package:newhotelyemeni/core/servesies/binding/binding.dart';
 import 'package:newhotelyemeni/core/servesies/myserves.dart';
 import 'package:newhotelyemeni/rout.dart';
 import 'package:newhotelyemeni/view/screen/aboutscreen.dart';
-import 'package:newhotelyemeni/view/screen/homescreen.dart';
+import 'package:newhotelyemeni/view/screen/homescreen/homescreen.dart';
+import 'package:newhotelyemeni/view/screen/hotel_details_screen.dart';
 import 'package:newhotelyemeni/view/screen/hotelsdetails.dart';
 import 'package:newhotelyemeni/view/screen/setings/language.dart';
 import 'package:newhotelyemeni/view/screen/setings/settingscreen.dart';
@@ -20,10 +23,8 @@ void main() async {
   await initialServers();
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -38,9 +39,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         primaryColor: AppColors.background,
         hintColor: Colors.amber[600],
-        scaffoldBackgroundColor: AppColors.primaryColor,
+        scaffoldBackgroundColor: Colors.white,
         appBarTheme: AppBarTheme(
-          color: Colors.transparent,
+          systemOverlayStyle: SystemUiOverlayStyle.light,
           elevation: 0,
         ),
         textTheme: TextTheme(
@@ -56,8 +57,10 @@ class MyApp extends StatelessWidget {
           textTheme: ButtonTextTheme.primary,
         ),
       ),
+
+      initialBinding: Binding(),
+
       home: HomeScreen(),
+      // home: Language(),
       getPages: getPages,
-    );
-  }
-}
+    );}}

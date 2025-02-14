@@ -7,10 +7,11 @@ import 'package:newhotelyemeni/view/screen/auth/onboarder_auth/onboader_screen.d
 import 'package:newhotelyemeni/view/screen/auth/signup.dart';
 import 'package:newhotelyemeni/view/screen/auth/success_signup.dart';
 import 'package:newhotelyemeni/view/screen/auth/verfiy_signup.dart';
+import 'package:newhotelyemeni/view/screen/hotel_details_screen.dart';
 import 'package:newhotelyemeni/view/screen/setings/settingscreen.dart';
 import 'package:newhotelyemeni/view/screen/wellcome.dart';
 import 'package:newhotelyemeni/view/screen/aboutscreen.dart';
-import 'package:newhotelyemeni/view/screen/homescreen.dart';
+import 'package:newhotelyemeni/view/screen/homescreen/homescreen.dart';
 import 'package:newhotelyemeni/view/screen/hotelsdetails.dart';
 
 
@@ -20,7 +21,6 @@ List<GetPage<dynamic>>? getPages=[
   GetPage(name: "/HomeScreen", page:()=> HomeScreen()),
   GetPage(name: "/HotelsDetails", page:()=> HotelsDetails()),
   GetPage(name: "/settingscreen", page:()=> settingscreen()),
-
 
   //Auth
   GetPage(name: "/onboarder", page:()=> OnboaderScreen()),

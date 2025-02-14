@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newhotelyemeni/controller/auth_controller.dart';
+import 'package:newhotelyemeni/controller/hotelsdetails_controller.dart';
+import 'package:newhotelyemeni/core/consttint/images.dart';
+import 'package:newhotelyemeni/data/model/hotel_model.dart';
 import 'package:newhotelyemeni/view/screen/booking_screen.dart';
 import 'package:newhotelyemeni/view/widget/fontandtext.dart';
 
+import '../../core/consttint/links.dart';
+
 class HotelDetailsScreen extends StatelessWidget {
-  final Map<String, dynamic> hotel;
+  final ModelHotel hotel;
   final authController = Get.put(AuthController());
 
   HotelDetailsScreen({required this.hotel});
@@ -79,7 +84,7 @@ class HotelDetailsScreen extends StatelessWidget {
   }
 
   void _showRatingDialog(BuildContext context) {
-    if (!authController.isLoggedIn) {
+    if (authController.isLoggedIn) {
       Get.dialog(
         AlertDialog(
           shape: RoundedRectangleBorder(
@@ -180,8 +185,9 @@ class HotelDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(HotelsDetailsController());
     final textStyles = Get.find<CustomTextStyles>();
-    return Scaffold(
+    return GetBuilder<HotelsDetailsController>(builder: (controller) => Scaffold(
       backgroundColor: Colors.grey[50],
       body: CustomScrollView(
         slivers: [
@@ -195,9 +201,9 @@ class HotelDetailsScreen extends StatelessWidget {
                 fit: StackFit.expand,
                 children: [
                   Hero(
-                    tag: 'hotel_${hotel['id']}',
-                    child: Image.asset(
-                      'assets/images/hotelimg.jpg',
+                    tag: 'hotel_${hotel.hotelId}',
+                    child: Image.network(
+                      '${AppLinks.rootImage}/hotel/${hotel.hotelImage}',
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -221,7 +227,7 @@ class HotelDetailsScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          hotel['name'] ?? 'اسم الفندق',
+                          hotel.hotelNamear ?? 'اسم الفندق',
                           style: textStyles.titleStyle(
                             color: Colors.white,
                             fontSize: 28,
@@ -232,7 +238,7 @@ class HotelDetailsScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Text(
-                              hotel['location'] ?? 'الموقع',
+                              hotel.addressCuntry ?? 'الموقع',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
@@ -280,7 +286,7 @@ class HotelDetailsScreen extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                hotel['rating']?.toString() ?? '4.5',
+                                hotel.hotelRating?.toString() ?? '4.5',
                                 style: TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,
@@ -375,13 +381,20 @@ class HotelDetailsScreen extends StatelessWidget {
                     spacing: 8,
                     runSpacing: 8,
                     children: [
-                      _buildAmenityChip(Icons.wifi, 'واي فاي مجاني'),
-                      _buildAmenityChip(Icons.ac_unit, 'تكييف'),
-                      _buildAmenityChip(Icons.room_service, 'خدمة الغرف'),
-                      _buildAmenityChip(
-                          Icons.local_laundry_service, 'غسيل ملابس'),
-                      _buildAmenityChip(Icons.security, 'أمن 24 ساعة'),
-                      _buildAmenityChip(Icons.elevator, 'مصعد'),
+                      ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                          itemCount: controller.serves.length,
+                          itemBuilder:(context, index) => _buildAmenityChip(Icons.wifi,
+                              ' ${controller.serves[index]['serves_name_ar']} '), )
+
+                      // _buildAmenityChip(Icons.wifi, 'واي فاي مجاني'),
+                      // _buildAmenityChip(Icons.ac_unit, 'تكييف'),
+                      // _buildAmenityChip(Icons.room_service, 'خدمة الغرف'),
+                      // _buildAmenityChip(
+                      //     Icons.local_laundry_service, 'غسيل ملابس'),
+                      // _buildAmenityChip(Icons.security, 'أمن 24 ساعة'),
+                      // _buildAmenityChip(Icons.elevator, 'مصعد'),
                     ],
                   ),
                 ),
@@ -409,7 +422,7 @@ class HotelDetailsScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 12),
                       Text(
-                        hotel['description'] ?? 'وصف الفندق يظهر هنا...',
+                        hotel.hotelDescriptionar ?? 'وصف الفندق يظهر هنا...',
                         style: TextStyle(
                           fontSize: 16,
                           height: 1.6,
@@ -426,71 +439,71 @@ class HotelDetailsScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: Container(
-        padding: EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 10,
-              offset: Offset(0, -5),
-            ),
-          ],
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              flex: 2,
-              child: ElevatedButton(
-                onPressed: () {
-                  Get.to(() => BookingScreen(hotel: hotel));
-                },
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 16),
-                  backgroundColor: Colors.blue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                child: Text(
-                  'احجز الآن',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(width: 16),
-            Expanded(
-              flex: 1,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    'سعر الليلة',
-                    style: TextStyle(
-                      color: Colors.grey[600],
-                      fontSize: 14,
-                    ),
-                  ),
-                  Text(
-                    '${hotel['price'] ?? '100'}\$',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+      // bottomNavigationBar: Container(
+      //   padding: EdgeInsets.all(16),
+      //   decoration: BoxDecoration(
+      //     color: Colors.white,
+      //     boxShadow: [
+      //       BoxShadow(
+      //         color: Colors.black.withOpacity(0.1),
+      //         blurRadius: 10,
+      //         offset: Offset(0, -5),
+      //       ),
+      //     ],
+      //   ),
+      //   child: Row(
+      //     children: [
+      //       Expanded(
+      //         flex: 2,
+      //         child: ElevatedButton(
+      //           onPressed: () {
+      //             Get.to(() => BookingScreen(hotel: hotel));
+      //           },
+      //           style: ElevatedButton.styleFrom(
+      //             padding: EdgeInsets.symmetric(vertical: 16),
+      //             backgroundColor: Colors.blue,
+      //             shape: RoundedRectangleBorder(
+      //               borderRadius: BorderRadius.circular(10),
+      //             ),
+      //           ),
+      //           child: Text(
+      //             'احجز الآن',
+      //             style: TextStyle(
+      //               fontSize: 18,
+      //               fontWeight: FontWeight.bold,
+      //               color: Colors.white,
+      //             ),
+      //           ),
+      //         ),
+      //       ),
+      //       SizedBox(width: 16),
+      //       Expanded(
+      //         flex: 1,
+      //         child: Column(
+      //           mainAxisSize: MainAxisSize.min,
+      //           crossAxisAlignment: CrossAxisAlignment.end,
+      //           children: [
+      //             Text(
+      //               'سعر الليلة',
+      //               style: TextStyle(
+      //                 color: Colors.grey[600],
+      //                 fontSize: 14,
+      //               ),
+      //             ),
+      //             Text(
+      //               '${hotel['price'] ?? '100'}\$',
+      //               style: TextStyle(
+      //                 fontSize: 20,
+      //                 fontWeight: FontWeight.bold,
+      //                 color: Colors.blue,
+      //               ),
+      //             ),
+      //           ],
+      //         ),
+      //       ),
+      //     ],
+      //   ),
+      // ),
+    ),);
   }
 }

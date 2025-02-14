@@ -130,6 +130,7 @@ class SignUp extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
+                      controller.signup();
                       // Get.toNamed("/signup");
                     },
                     child: Text(
