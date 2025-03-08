@@ -8,6 +8,7 @@ import 'package:newhotelyemeni/core/servesies/binding/binding.dart';
 import 'package:newhotelyemeni/core/servesies/myserves.dart';
 import 'package:newhotelyemeni/rout.dart';
 import 'package:newhotelyemeni/view/screen/aboutscreen.dart';
+import 'package:newhotelyemeni/view/screen/auth/login.dart';
 import 'package:newhotelyemeni/view/screen/homescreen/homescreen.dart';
 import 'package:newhotelyemeni/view/screen/hotel_details_screen.dart';
 import 'package:newhotelyemeni/view/screen/hotelsdetails.dart';
@@ -60,7 +61,7 @@ class MyApp extends StatelessWidget {
 
       initialBinding: Binding(),
 
-      home: HomeScreen(),
+      home: Login(),
       // home: Language(),
       getPages: getPages,
     );}}

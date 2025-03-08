@@ -3,6 +3,7 @@ import 'package:newhotelyemeni/core/consttint/colors.dart';
 
 class CustomTextForm extends StatelessWidget {
   final String label;
+  final String? hint;
   final IconData icon;
   final IconData? iconshowpassword;
   final IconData? iconpassword;
@@ -23,32 +24,34 @@ class CustomTextForm extends StatelessWidget {
     required this.label,
     this.iconshowpassword,
     this.iconpassword,
+    this.hint,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       // margin: const EdgeInsets.symmetric(vertical: 12.0), // التباعد بين الحقول
-      padding: const EdgeInsets.symmetric(horizontal: 16.0), // المسافة داخل الحقل
+      padding:
+          const EdgeInsets.symmetric(horizontal: 16.0), // المسافة داخل الحقل
       // padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: const Color(0xFFF5F5F5), //// خلفية الحقل (رمادي فاتح)
-        border: Border(
-          bottom:BorderSide(color:Color(0xFFCCCCCC) )
-        )
-        // borderRadius: BorderRadius.circular(12.0), // الحواف المستديرة
-        // border: Border.all(color: const Color(0xFFCCCCCC)), // لون الإطار
+          color: const Color.fromARGB(
+              255, 255, 254, 254), //// خلفية الحقل (رمادي فاتح)
+          border: Border(bottom: BorderSide(color: Color(0xFFCCCCCC)))
+          // borderRadius: BorderRadius.circular(12.0), // الحواف المستديرة
+          // border: Border.all(color: const Color(0xFFCCCCCC)), // لون الإطار
 
-      ),
+          ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // أيقونة الحقل
           Icon(
-            icon,
-            color: const Color(0xFF0A99FF), // لون الأزرق للأيقونات
+            icon, size: 22,
+            // color:
+            //     const Color.fromARGB(255, 33, 33, 33), // لون الأزرق للأيقونات
           ),
-          const SizedBox(width: 12), // مسافة بين الأيقونة والحقل
+          const SizedBox(width: 5), // مسافة بين الأيقونة والحقل
 
           // الحقل النصي
           Expanded(
@@ -63,10 +66,16 @@ class CustomTextForm extends StatelessWidget {
               ),
               keyboardType: keyboardType,
               decoration: InputDecoration(
+                hintText: hint ?? '',
+
+                hintStyle: const TextStyle(fontSize: 14, color: Colors.grey),
+                floatingLabelBehavior: FloatingLabelBehavior.always,
+                filled: true,
+                fillColor: Colors.white,
                 labelText: label,
                 labelStyle: const TextStyle(
                   color: Color(0xFF555555), // لون النص الثانوي
-                  fontSize: 14,
+                  fontSize: 16,
                 ),
                 border: InputBorder.none, // إزالة الإطار الأساسي
               ),
@@ -80,7 +89,8 @@ class CustomTextForm extends StatelessWidget {
               icon: Icon(
                 isPassword == false ? iconpassword : iconshowpassword,
               ),
-              color: const Color(0xFF999999), // لون الأيقونة الإضافية
+              color: const Color.fromARGB(
+                  255, 77, 74, 74), // لون الأيقونة الإضافية
             ),
         ],
       ),
