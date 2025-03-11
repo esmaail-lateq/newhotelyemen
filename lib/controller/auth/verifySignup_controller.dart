@@ -59,7 +59,7 @@ class verifyemailControllerAuthImp extends verifyemailControllerAuth{
   }
   @override
   void onInit() {
-    email=Get.arguments['email'];
+    email=Get.arguments['phone'];
 
     super.onInit();
   }

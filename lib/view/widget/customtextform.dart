@@ -12,6 +12,7 @@ class CustomTextForm extends StatelessWidget {
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
   final void Function()? chingpassword;
+  final void Function(String)? onChanged;
 
   const CustomTextForm({
     super.key,
@@ -25,6 +26,7 @@ class CustomTextForm extends StatelessWidget {
     this.iconshowpassword,
     this.iconpassword,
     this.hint,
+    this.onChanged
   });
 
   @override
@@ -56,6 +58,8 @@ class CustomTextForm extends StatelessWidget {
           // الحقل النصي
           Expanded(
             child: TextFormField(
+              onChanged: onChanged,
+
               textInputAction: TextInputAction.next,
               validator: validator,
               controller: mycontroller,
@@ -67,6 +71,7 @@ class CustomTextForm extends StatelessWidget {
               keyboardType: keyboardType,
               decoration: InputDecoration(
                 hintText: hint ?? '',
+
 
                 hintStyle: const TextStyle(fontSize: 14, color: Colors.grey),
                 floatingLabelBehavior: FloatingLabelBehavior.always,

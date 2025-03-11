@@ -112,7 +112,7 @@ class SignUp extends StatelessWidget {
                                         ispassword: false,
                                         validator: (p0) {
                                           return validInput(
-                                              p0!, 9, 25, '21'.tr);
+                                              p0!, 9, 25, 'phone');
                                         },
                                         hint: 'ادخل رقم الهاتف'.tr,
                                         iconData: Icons.phone,
@@ -166,7 +166,7 @@ class SignUp extends StatelessWidget {
                                         child: Customebuttone(
                                           text: 'انشاء'.tr,
                                           onPressed: () {
-                                            // controller.signup();
+                                            controller.signup();
                                           },
                                         ),
                                       ),

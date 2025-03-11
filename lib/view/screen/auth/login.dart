@@ -122,9 +122,9 @@ class Login extends StatelessWidget {
                                       ),
                                       InkWell(
                                         onTap: () {
-                                          Get.toNamed('/Repassword');
+                                          // Get.toNamed('/Repassword');
                                           // () =>
-                                          //   controller.toforgetpassword()
+                                            controller.forgetpassword();
                                         },
                                         child: Container(
                                           padding:
@@ -147,7 +147,7 @@ class Login extends StatelessWidget {
                                         child: Customebuttone(
                                           text: 'تسجيل الدخول'.tr,
                                           onPressed: () {
-                                            // controller.Login();
+                                            controller.login();
                                           },
                                         ),
                                       ),

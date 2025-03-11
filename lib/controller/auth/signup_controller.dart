@@ -42,16 +42,23 @@ StatusRquest statusRquest = StatusRquest.nune;
   @override
   signup()async {
     if(formstate.currentState!.validate()){
-      var response= await signupData.postData(username.text, password.text, email.text, phone.text);
-      statusRquest =  handling(response);
-      if(statusRquest == StatusRquest.success){
-        if(response['"status'] == "success"){
-          Get.offAllNamed("/onboarder");
-        }
-        else if(response['"status'] == "finde"){
-          Get.defaultDialog(title: "Error" , middleText: "Phone Number Or Email Already Exists");
-        }
-      }
+      Get.offAllNamed("/verifyEmail" , arguments:{
+        "phone":phone.text,
+
+      });
+      // var response= await signupData.postData(username.text, password.text, email.text, phone.text);
+      // statusRquest =  handling(response);
+      // if(statusRquest == StatusRquest.success){
+      //   if(response['"status'] == "success"){
+      //     Get.offAllNamed("/verifyEmail" , arguments:{
+      //       "phone":phone.text,
+      //
+      //     });
+      //   }
+      //   else if(response['"status'] == "finde"){
+      //     Get.defaultDialog(title: "Error" , middleText: "Phone Number Or Email Already Exists");
+      //   }
+      // }
 
     }
     else{

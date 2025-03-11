@@ -2,10 +2,13 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newhotelyemeni/controller/auth/forgetpassword/resetpassword_controller.dart';
+import 'package:newhotelyemeni/view/widget/auth/clipe.dart';
 import 'package:newhotelyemeni/view/widget/custombuttom.dart';
 import 'package:newhotelyemeni/view/widget/customtextform.dart';
 
+import '../../../../core/consttint/colors.dart';
 import '../../../../core/function/validator.dart';
+import '../../../widget/auth/customtext.dart';
 
 class ResetPassword extends StatelessWidget {
   const ResetPassword({super.key});
@@ -19,57 +22,57 @@ class ResetPassword extends StatelessWidget {
             padding: const EdgeInsets.all(1.0),
             child: SingleChildScrollView(
                 child: Form(
-              key: controller.formstate,
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        colors: [
-                      Colors.blue.shade600,
-                      Colors.blue.shade400,
-                      Colors.blue.shade200
-                    ])),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    SizedBox(
-                      height: 80,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          FadeInUp(
-                              duration: Duration(milliseconds: 1000),
-                              child: Text(
-                                "Reset Password",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 40),
-                              )),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          FadeInUp(
-                              duration: Duration(milliseconds: 1300),
-                              child: Text(
-                                "New Password".tr,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 18),
-                              )),
-                        ],
+                  key: controller.formstate,
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 300,
+                        child: Stack(
+                          children: [
+                            ClipPath(
+                              clipper: Clipe(),
+                              child: Container(
+                                height: 280,
+                                decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      spreadRadius: 7,
+                                      offset: Offset(1, 5),
+                                      blurRadius: 9
+                                    ),
+                                  ],
+                                  gradient: LinearGradient(colors:[
+                                    AppColors.primaryColor,
+                                    AppColors.text2
+                                  ],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                  ),
+                                    color: AppColors.primaryColor
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                                bottom: 20,
+                                left: 50,
+                                child: Customtext(
+                                  text: '17'.tr,
+                                )),
+                            Positioned(
+                              bottom: 0,
+                              left:50 ,
+                              child: Container(
+                                height: 2,
+                                width: 150,
+                                color: AppColors.primaryColor,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 20),
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(60),
-                              topRight: Radius.circular(60))),
-                      child: Padding(
-                        padding: EdgeInsets.all(30),
+
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 25),
                         child: Column(
                           children: <Widget>[
                             // FadeInUp(duration: Duration(milliseconds: 1300),
@@ -137,7 +140,7 @@ class ResetPassword extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     color: Colors.blueGrey,
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(20)),
+                                    BorderRadius.all(Radius.circular(20)),
                                   ),
                                   child: CustomButtom(
                                     titel: "Save New Password",
@@ -151,11 +154,10 @@ class ResetPassword extends StatelessWidget {
                             ),
                           ],
                         ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+                      )
+                    ],
+                  ),
+
             ))),
       ),
     );

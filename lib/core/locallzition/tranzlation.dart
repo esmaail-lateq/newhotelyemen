@@ -22,6 +22,9 @@ class MyTranzlation extends Translations{
       "11": "رقم الهاتف",
       "12":"كلمة السر",
       "13":"تاكيد كلمة السر",
+      "15":"تحقق من رقم التلفون ",
+      "16": "تحقق من الكود ",
+      "17":"كلمت السر الجديدة"
 
 
 
@@ -45,6 +48,9 @@ class MyTranzlation extends Translations{
       "11": "phone",
       "12":"password",
       "13":"confirm password",
+      "15":"Check your phone",
+      "16":"Verify Code",
+      "17":"New Password"
 
 
     }
