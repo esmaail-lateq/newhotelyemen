@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:newhotelyemeni/core/consttint/rout_name.dart';
+import 'package:newhotelyemeni/core/my_middleware.dart';
 import 'package:newhotelyemeni/view/screen/auth/forgetpassword/checkpassword.dart';
 import 'package:newhotelyemeni/view/screen/auth/forgetpassword/resetpassword.dart';
 import 'package:newhotelyemeni/view/screen/auth/forgetpassword/verify_Repassword.dart';
@@ -16,21 +18,23 @@ import 'package:newhotelyemeni/view/screen/hotelsdetails.dart';
 
 
 List<GetPage<dynamic>>? getPages=[
-  GetPage(name: "/", page:()=> Wellcome()),
-  GetPage(name: "/AboutScreen", page:()=> AboutScreen()),
-  GetPage(name: "/HomeScreen", page:()=> HomeScreen()),
-  GetPage(name: "/HotelsDetails", page:()=> HotelsDetails()),
-  GetPage(name: "/settingscreen", page:()=> settingscreen()),
+  // GetPage(name: "/", page:()=> Wellcome()),
+   GetPage(
+      name: '/', page: () => const Login(), middlewares: [Mymiddleware()]),
+  GetPage(name: RoutName.aboutScreen, page:()=> AboutScreen()),
+  GetPage(name: RoutName.homePage, page:()=> HomeScreen()),
+  GetPage(name: RoutName.hotelsDetails, page:()=> HotelsDetails()),
+  GetPage(name: RoutName.settingscreen, page:()=> settingscreen()),
 
   //Auth
-  GetPage(name: "/onboarder", page:()=> OnboaderScreen()),
-  GetPage(name: "/login", page:()=> Login()),
-  GetPage(name: "/signup", page:()=> SignUp()),
-  GetPage(name: "/verifyEmail", page:()=> VerifySignup()),
-  GetPage(name: "/successEmail", page:()=> SuccessSignup()),
-  GetPage(name: "/checkPassword", page:()=> CheckPassword()),
-  GetPage(name: "/verifyRepassword", page:()=> VerifyResatePassword()),
-  GetPage(name: "/Repassword", page:()=> ResetPassword()),
+  GetPage(name: RoutName.onboarder, page:()=> OnboaderScreen()),
+  GetPage(name: RoutName.login, page:()=> Login()),
+  GetPage(name: RoutName.signup, page:()=> SignUp()),
+  GetPage(name: RoutName.verifyEmail, page:()=> VerifySignup()),
+  GetPage(name: RoutName.successEmail, page:()=> SuccessSignup()),
+  GetPage(name: RoutName.checkPassword, page:()=> CheckPassword()),
+  GetPage(name: RoutName.verifyRepassword, page:()=> VerifyResatePassword()),
+  GetPage(name: RoutName.repassword, page:()=> ResetPassword()),
 
 
 
