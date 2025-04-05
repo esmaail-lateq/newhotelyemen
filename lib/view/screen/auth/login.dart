@@ -23,164 +23,158 @@ class Login extends StatelessWidget {
         body: WillPopScope(
             onWillPop: alertExitApp,
             child: GetBuilder<LoginControllerImp>(
-                builder: (controller) => HandlingStatusView(
-                      statusRquest: controller.statusRquest!,
-                      widget: Form(
-                        key: controller.formstate,
-                        child: SingleChildScrollView(
+              builder: (controller) => Form(
+                key: controller.formstate,
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    //  mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 300,
+                        child: Stack(
+                          children: [
+                            ClipPath(
+                              clipper: Clipe(),
+                              child: Container(
+                                  height: 270,
+                                  decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                          spreadRadius: 7,
+                                          offset: Offset(1, 5),
+                                          blurRadius: 9,
+                                          color: Colors.grey.withOpacity(0.4))
+                                    ],
+                                    gradient: LinearGradient(
+                                        colors: [
+                                          AppColors.primaryColor,
+                                          AppColors.text2
+                                        ],
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter),
+                                    color: AppColors.primaryColor,
+                                  )),
+                            ),
+                            const Positioned(
+                              bottom: 20,
+                              left: 50,
+                              child: Customtext(
+                                text: 'تسجيل الدخول',
+                              ),
+                            ),
+                            Positioned(
+                                bottom: 0,
+                                left: 50,
+                                child: Container(
+                                  height: 4,
+                                  width: 100,
+                                  color: AppColors.primaryColor,
+                                ))
+                          ],
+                        ),
+                      ),
+                      FadeInUp(
+                        duration: Duration(milliseconds: 1000),
+                        child: Container(
+                          padding: const EdgeInsets.all(15),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
-                            //  mainAxisAlignment: MainAxisAlignment.start,
                             children: [
+                              // Container(
+                              //   height: 10,
+                              // ),
+                              // Customtextbody(
+                              //   text: '11'.tr,
+                              // ),
                               Container(
-                                height: 300,
-                                child: Stack(
-                                  children: [
-                                    ClipPath(
-                                      clipper: Clipe(),
-                                      child: Container(
-                                          height: 270,
-                                          decoration: BoxDecoration(
-                                            boxShadow: [
-                                              BoxShadow(
-                                                  spreadRadius: 7,
-                                                  offset: Offset(1, 5),
-                                                  blurRadius: 9,
-                                                  color: Colors.grey
-                                                      .withOpacity(0.4))
-                                            ],
-                                            gradient: LinearGradient(
-                                                colors: [
-                                                  AppColors.primaryColor,
-                                                  AppColors.text2
-                                                ],
-                                                begin: Alignment.topCenter,
-                                                end: Alignment.bottomCenter),
-                                            color: AppColors.primaryColor,
-                                          )),
-                                    ),
-                                    const Positioned(
-                                      bottom: 20,
-                                      left: 50,
-                                      child: Customtext(
-                                        text: 'تسجيل الدخول',
-                                      ),
-                                    ),
-                                    Positioned(
-                                        bottom: 0,
-                                        left: 50,
-                                        child: Container(
-                                          height: 4,
-                                          width: 100,
-                                          color: AppColors.primaryColor,
-                                        ))
-                                  ],
-                                ),
+                                height: 10,
                               ),
-                              FadeInUp(
-                                duration: Duration(milliseconds: 1000),
+                              Custometextform(
+                                text: 'البريد الالكتروني',
+                                isnumber: false,
+                                ispassword: false,
+                                validator: (p0) {
+                                  return validInput(p0!, 5, 100, 'email');
+                                },
+                                hint: 'ادخل البريد الالكتروني',
+                                iconData: Icons.email_outlined,
+                                mycontroller: controller.email,
+                              ),
+                              Custometextform(
+                                text: 'كلمة السر'.tr,
+                                isnumber: false,
+                                ispassword: true,
+                                validator: (p0) {
+                                  return validInput(p0!, 5, 100, 'password');
+                                },
+                                hint: 'ادخل كلمة السر'.tr,
+                                iconData: Icons.remove_red_eye_outlined,
+                                mycontroller: controller.password,
+                              ),
+                              Container(
+                                height: 20,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  // Get.toNamed('/Repassword');
+                                  // () =>
+                                  controller.forgetpassword();
+                                },
                                 child: Container(
-                                  padding: const EdgeInsets.all(15),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      // Container(
-                                      //   height: 10,
-                                      // ),
-                                      // Customtextbody(
-                                      //   text: '11'.tr,
-                                      // ),
-                                      Container(
-                                        height: 10,
-                                      ),
-                                      Custometextform(
-                                        text: 'البريد الالكتروني',
-                                        isnumber: false,
-                                        ispassword: false,
-                                        validator: (p0) {
-                                          return validInput(
-                                              p0!, 5, 100, 'email');
-                                        },
-                                        hint: 'ادخل البريد الالكتروني',
-                                        iconData: Icons.email_outlined,
-                                        mycontroller: controller.email,
-                                      ),
-                                      Custometextform(
-                                        text: 'كلمة السر'.tr,
-                                        isnumber: false,
-                                        ispassword: true,
-                                        validator: (p0) {
-                                          return validInput(
-                                              p0!, 5, 100, 'password');
-                                        },
-                                        hint: 'ادخل كلمة السر'.tr,
-                                        iconData: Icons.remove_red_eye_outlined,
-                                        mycontroller: controller.password,
-                                      ),
-                                      Container(
-                                        height: 20,
-                                      ),
-                                      InkWell(
-                                        onTap: () {
-                                          // Get.toNamed('/Repassword');
-                                          // () =>
-                                            controller.forgetpassword();
-                                        },
-                                        child: Container(
-                                          padding:
-                                              const EdgeInsets.only(right: 20),
-                                          width: double.infinity,
-                                          child: Text(
-                                            'هل نسيت كلمو المرور؟',
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                                color: AppColors.primaryColor,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 10,
-                                      ),
-                                      SizedBox(
-                                        width: double.infinity,
-                                        child: Customebuttone(
-                                          text: 'تسجيل الدخول'.tr,
-                                          onPressed: () {
-                                            controller.login();
-                                          },
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 15,
-                                      ),
-                                      Customtextsignup(
-                                        textAske: 'ليس لدي حساب؟'.tr,
-                                        textOption: 'انشاء حساب'.tr,
-                                        onTap: () {
-                                          Get.offNamed("/signup");
-                                        },
-                                      ),
-
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      // Customtextsignup(
-                                      //   textAske: '',
-                                      //   textOption: 'المتابعة بدون حساب',
-                                      //   onTap: () {
-                                      //     // controller.toHome();
-                                      //   },
-                                      // ),
-                                    ],
+                                  padding: const EdgeInsets.only(right: 20),
+                                  width: double.infinity,
+                                  child: Text(
+                                    'هل نسيت كلمو المرور؟',
+                                    textAlign: TextAlign.start,
+                                    style: TextStyle(
+                                        color: AppColors.primaryColor,
+                                        fontWeight: FontWeight.bold),
                                   ),
                                 ),
-                              )
+                              ),
+                              Container(
+                                height: 10,
+                              ),
+                              SizedBox(
+                                width: double.infinity,
+                                child: Customebuttone(
+                                  text: 'تسجيل الدخول'.tr,
+                                  onPressed: () {
+                                    controller.login(controller.email.text,controller.password.text);
+                                  },
+                                ),
+                              ),
+                              Container(
+                                height: 15,
+                              ),
+                              Customtextsignup(
+                                textAske: 'ليس لدي حساب؟'.tr,
+                                textOption: 'انشاء حساب'.tr,
+                                onTap: () {
+                                  Get.offNamed("/signup");
+                                },
+                              ),
+
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              // Customtextsignup(
+                              //   textAske: '',
+                              //   textOption: 'المتابعة بدون حساب',
+                              //   onTap: () {
+                              //     // controller.toHome();
+                              //   },
+                              // ),
                             ],
                           ),
                         ),
-                      ),
-                    ))));
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            )));
   }
 }
 
