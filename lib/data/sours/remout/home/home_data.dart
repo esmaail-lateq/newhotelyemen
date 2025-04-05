@@ -5,9 +5,8 @@ class HomeData {
   CURD curd;
   HomeData(this.curd);
 
-  postData()async{
-    var response = await curd.PostData(AppLinks.LinkHomeScreen, {
-    });
+  postData() async {
+    var response = await curd.postData(AppLinks.LinkHomeScreen, {},{});
     return response.fold((l) => l, (r) => r);
   }
 }

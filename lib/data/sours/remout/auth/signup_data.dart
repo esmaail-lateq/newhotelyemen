@@ -1,21 +1,28 @@
+import 'package:newhotelyemeni/api_links.dart';
 import 'package:newhotelyemeni/core/class/curd.dart';
 import 'package:newhotelyemeni/core/consttint/links.dart';
 
-class SignupData{
-
+class SignupData {
   CURD curd;
 
   SignupData(this.curd);
+   Map<String, String>? header = {
+    // "Accept": "application/json",
+    "Content-Type": "application/x-www-form-urlencoded",
+  };
 
-  postData(String name , String password , String email , String phone)async{
-   var response = await curd.PostData(AppLinks.LinkSignup, {
-     "user_name":name,
-     "user_password":password,
-     "user_email":email,
-     "user_phone":phone,
-   });
-   return response.fold((l) => l, (r) => r,);
-
+  postData(String name, String password, String email, String phone,String passwordConfirmation) async {
+    var response=
+     await curd.postData(AppLinksApi.signup, {
+      "name": name,
+      "password": password,
+      "password_confirmation": password,
+      "email": email,
+      "phone_number": phone,
+    },header);
+    return response.fold(
+      (l) => l,
+      (r) => r,
+    );
   }
-
 }
