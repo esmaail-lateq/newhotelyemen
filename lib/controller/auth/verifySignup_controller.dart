@@ -1,32 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:newhotelyemeni/core/consttint/rout_name.dart';
 
-
-abstract class verifyemailControllerAuth extends GetxController{
+abstract class verifyemailControllerAuth extends GetxController {
   check();
   gotosuccesssingup(String verifycodeSignup);
-
 }
-class verifyemailControllerAuthImp extends verifyemailControllerAuth{
-   String? verifycode ;
+
+class verifyemailControllerAuthImp extends verifyemailControllerAuth {
+  String? verifycode;
 
   String? email;
 
   @override
   gotosuccesssingup(String verifycodeSignup) {
-    if(verifycodeSignup == "77777"){
-      Get.offAllNamed("/successEmail");
-    }
-    else{
+    if (verifycodeSignup == "77777") {
+      Get.offAllNamed(RoutName.successEmail);
+    } else {
       Get.dialog(AlertDialog(
-        icon:Icon(Icons.error_outline,color: Colors.red,size: 75,),
+        icon: Icon(
+          Icons.error_outline,
+          color: Colors.red,
+          size: 75,
+        ),
         content: Text("This verifycode is false again tray write verifycode"),
         actions: [
-          MaterialButton(onPressed: (){
-            Get.back();
-          },child: Icon(Icons.close),color: Colors.redAccent,)
+          MaterialButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: Icon(Icons.close),
+            color: Colors.redAccent,
+          )
         ],
-
       ));
       // Get.defaultDialog(title: "Error" , middleText: "This verifycode is false again tray write verifycode",);
     }
@@ -54,20 +60,16 @@ class verifyemailControllerAuthImp extends verifyemailControllerAuth{
   // }
 
   @override
-  check() {
-
-  }
+  check() {}
   @override
   void onInit() {
-    email=Get.arguments['phone'];
+    email = Get.arguments['phone'];
 
     super.onInit();
   }
+
   @override
   void dispose() {
     super.dispose();
   }
-
-
-
 }

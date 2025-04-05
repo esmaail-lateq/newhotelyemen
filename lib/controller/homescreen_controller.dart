@@ -13,45 +13,38 @@ import 'package:newhotelyemeni/view/screen/hotel_details_screen.dart';
 class HomeScreenController extends GetxController {
   HomeData homeData = HomeData(Get.find());
   HotelItemsData hotelItemsData = HotelItemsData(Get.find());
-  List<ModelCateogrey> servicesData=[];
-  List<ModelHotel> hoteldata=[];
-  List<ModelHotelitems> hotelitems=[];
+  List<ModelCateogrey> servicesData = [];
+  List<ModelHotel> hoteldata = [];
+  List<ModelHotelitems> hotelitems = [];
   StatusRquest statusRquest = StatusRquest.nune;
-  int?selectcate;
-  chaingCateo(int index , String cato){
+  int? selectcate;
+  chaingCateo(int index, String cato) {
     selectcate = index;
     getHotelItems(cato);
     update();
   }
 
-
-
-
-  getData()async{
+  getData() async {
     print("objectfefafaefwa");
     statusRquest = StatusRquest.loading;
     update();
     var response = await homeData.postData();
     statusRquest = handling(response);
     update();
-    if(statusRquest == StatusRquest.success){
-      if(response['stutes'] == "success"){
+    if (statusRquest == StatusRquest.success) {
+      if (response['stutes'] == "success") {
         List responsecateo = response['cateogreys'];
-        List responsehotel=response['hotel'];
-        servicesData.addAll(responsecateo.map((e)=> ModelCateogrey.fromJson(e)));
-        hoteldata.addAll(responsehotel.map((e)=>ModelHotel.fromJson(e)));
-      }
-      else{
+        List responsehotel = response['hotel'];
+        servicesData
+            .addAll(responsecateo.map((e) => ModelCateogrey.fromJson(e)));
+        hoteldata.addAll(responsehotel.map((e) => ModelHotel.fromJson(e)));
+      } else {
         statusRquest = StatusRquest.failure;
       }
-    }
-    else{
-    }
-
+    } else {}
   }
 
-
-  getHotelItems(String cateo)async{
+  getHotelItems(String cateo) async {
     hotelitems.clear();
     update();
     statusRquest = StatusRquest.loading;
@@ -59,23 +52,20 @@ class HomeScreenController extends GetxController {
     var response = await hotelItemsData.postData(cateo);
     statusRquest = handling(response);
     update();
-    if(statusRquest == StatusRquest.success){
-      if(response['status'] == "success"){
+    if (statusRquest == StatusRquest.success) {
+      if (response['status'] == "success") {
         List responsedata = response['data'];
         hotelitems.addAll(responsedata.map((e) => ModelHotelitems.fromJson(e)));
-      }
-      else{
+      } else {
         statusRquest = StatusRquest.failure;
         update();
       }
-    }
-    else{
-    }
+    } else {}
   }
+
   @override
   void onInit() {
     getData();
     super.onInit();
   }
-
 }
