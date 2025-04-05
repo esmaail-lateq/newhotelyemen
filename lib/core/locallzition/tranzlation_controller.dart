@@ -4,7 +4,7 @@ import 'package:newhotelyemeni/core/servesies/myserves.dart';
 
 class LocalController extends GetxController{
   Locale? langage;
-  Myserves myserves = Get.find();
+  MyServices myserves = Get.find();
   changelanguage(String lancode){
     Locale locale = Locale(lancode);
     myserves.sharedPreferences.setString("local", lancode);
