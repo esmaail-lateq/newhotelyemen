@@ -5,6 +5,11 @@ enum StatusRquest{
   failure,
   serverfailure,
   offline,
+  badRequest,
+  authFailer,
+  notfound
+
+  
 
 
 
