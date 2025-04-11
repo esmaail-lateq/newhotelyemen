@@ -1,4 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+ <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
         android:label="newhotelyemeni"
         android:name="${applicationName}"
@@ -19,6 +21,7 @@
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
+              <!-- <meta-data android:name="mapbox_access_token" android:value="pk.eyJ1IjoiYm5zYXdsYW4xMjMiLCJhIjoiY205Y3Vmcnc2MDdzZTJrcjdmbjkzdHA0MiJ9.NFbVIIL2ZK8R0Vx2tokV9w" /> -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

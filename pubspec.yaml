@@ -46,6 +46,13 @@ dependencies:
   http: ^1.2.2
   dartz: ^0.10.1
   flutter_svg: ^2.0.16
+  # mapbox_gl: ^0.16.0
+  shimmer: ^3.0.0
+  flutter_screenutil: ^5.9.3
+  mapbox_maps_flutter: ^2.7.0
+  flutter_dotenv: ^5.2.1
+  # geolocator: ^13.0.4
+  geolocator_android: 4.6.1
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +80,7 @@ flutter:
   assets:
    - assets/images/
    - assets/animation/
+   - .env
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

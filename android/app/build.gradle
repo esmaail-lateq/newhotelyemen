@@ -24,7 +24,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.example.newhotelyemeni"
-    compileSdk flutter.compileSdkVersion
+    compileSdk 34
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -64,4 +64,19 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+        androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    // testImplementation 'junit:junit:4.12'
+    // androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    // androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+    // constraints {
+    //     implementation('com.google.android.gms:play-services-location') {
+    //         version {
+    //             strictly "16.0.0"
+    //         }
+    //         because 'location: 4.2.3 does not specify version play-services-location'
+    //         }
+    // }
+    
+    }
