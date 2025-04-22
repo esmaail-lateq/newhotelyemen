@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
-import 'package:newhotelyemeni/view/screen/hotelsLocations/hotel_loaction_on_map.dart';
+
+import 'package:newhotelyemeni/view/screen/hotelsLocations/test/map_view.dart';
+import 'package:newhotelyemeni/view/screen/hotelsLocations/map_view_screen.dart';
 import 'package:newhotelyemeni/view/widget/elevatedbuttons.dart';
 import 'package:newhotelyemeni/view/widget/fontandtext.dart';
 
@@ -103,7 +105,9 @@ class CustomAppbar extends StatelessWidget {
                 icon: Icons.map,
                 backgroundColor: Colors.white,
                 onPressed: () {
-                  Get.to(() => NearestLocationMap());
+                  // Get.to(() => MapView());
+                  Get.to(() => MapViewScreen());
+                  // Get.to(() => Testlocation());
                 },
                 textColor: Colors.black,
               ),
