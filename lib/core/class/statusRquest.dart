@@ -7,7 +7,20 @@ enum StatusRquest{
   offline,
   badRequest,
   authFailer,
+
   notfound
+
+
+
+}
+enum PreimssionStatusRquest{
+  nune,
+  loading,
+
+  perimssionNotAllow,
+  perimssionAllow,
+  locationOff,
+
 
   
 
