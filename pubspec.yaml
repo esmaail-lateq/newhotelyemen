@@ -51,8 +51,10 @@ dependencies:
   flutter_screenutil: ^5.9.3
   mapbox_maps_flutter: ^2.7.0
   flutter_dotenv: ^5.2.1
-  # geolocator: ^13.0.4
-  geolocator_android: 4.6.1
+  geolocator: ^13.0.4
+  # geolocator_android: 4.6.1
+  # flutter_polyline_points: ^2.1.0
+  permission_handler: ^12.0.0+1
 
 dev_dependencies:
   flutter_test:
@@ -79,6 +81,9 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
    - assets/images/
+   - assets/
+   - assets/symbols/
+   - assets/cluster/
    - assets/animation/
    - .env
   #   - images/a_dot_ham.jpeg
