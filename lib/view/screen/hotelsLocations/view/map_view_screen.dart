@@ -108,7 +108,7 @@ class MapViewScreen extends StatelessWidget {
                         child: Text('اقرب فندق'),
                       ),
                     ),
-                    if (!controller.isLocationEnabled.value) _buildGpsWarning(),
+                    // if (!controller.isLocationEnabled.value) _buildGpsWarning(),
                   ],
                 )
               : controller.permissionDeniedForever.value
