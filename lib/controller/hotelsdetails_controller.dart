@@ -5,7 +5,7 @@ import 'package:newhotelyemeni/data/model/catogry_model.dart';
 import 'package:newhotelyemeni/data/sours/remout/serves/servesView_data.dart';
 
 class HotelsDetailsController extends GetxController {
-  late List<ModelCateogrey> cateData = [];
+  late List cateData = [];
   ServesViewData servesViewData = ServesViewData(Get.find());
   StatusRquest statusRquest = StatusRquest.nune;
   late String hotelid;
