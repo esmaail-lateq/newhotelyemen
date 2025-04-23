@@ -46,6 +46,12 @@ class CURD {
                 ),
                 headers: header);
             break;
+          case 'mapbox':
+            response = await http.get(
+               Uri.parse(
+      linkurl),
+                headers: header);
+            break;
         }
         if (kDebugMode) {
           print(
