@@ -42,3 +42,5 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 .env
+/lib/view/screen/hotelsLocations/test
+lib/view/screen/hotelsLocations/controller/test.dart
