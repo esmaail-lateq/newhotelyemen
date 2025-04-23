@@ -5,6 +5,9 @@ import 'package:newhotelyemeni/controller/homescreen_controller.dart';
 import 'package:newhotelyemeni/core/consttint/links.dart';
 import 'package:newhotelyemeni/view/screen/homescreen/homeScreenWidget/custom_appbar.dart';
 import 'package:newhotelyemeni/view/screen/homescreen/hotel_items.dart';
+import 'package:newhotelyemeni/view/screen/hotelsLocations/test/lib/main.dart';
+import 'package:newhotelyemeni/view/screen/hotelsLocations/test/lib/traffic_route_line_example.dart';
+import 'package:newhotelyemeni/view/screen/hotelsLocations/view/widget/map_bottom_sheet.dart';
 import 'package:newhotelyemeni/view/widget/category_explor.dart';
 import 'package:newhotelyemeni/view/widget/fontandtext.dart';
 import 'package:newhotelyemeni/view/widget/elevatedbuttons.dart';
@@ -178,6 +181,21 @@ class HomeScreen extends StatelessWidget {
                     //     ),
                     //   ),
                     // ),
+                    TextButton(
+                        onPressed: () {
+                          Get.to(() => MapsDemo());
+                        },
+                        child: Text('map test')),
+                    TextButton(
+                        onPressed: () {
+                          Get.to(() => TrafficRouteLineExample());
+                        },
+                        child: Text('map test')),
+                    // TextButton(
+                    //     onPressed: () {
+                    //       showHotelBottomSheet();
+                    //     },
+                    //     child: Text('map test')),
                     Padding(
                       padding: EdgeInsets.all(20),
                       child: Column(

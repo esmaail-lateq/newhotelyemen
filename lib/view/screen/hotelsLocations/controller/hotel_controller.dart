@@ -22,6 +22,17 @@ class HotelModel {
   final String description;
   final double latitude;
   final double longitude;
+  final List<String> images = [
+    'assets/images/test1.png',
+    'assets/images/test2.png',
+    'assets/images/test3.webp',
+    'assets/images/test4.jpg',
+    'assets/images/test5.jpg',
+    'assets/images/test6.webp',
+    'assets/images/test7.png',
+    'assets/images/test8.png',
+    'assets/images/test9.png',
+  ];
 
   HotelModel({
     required this.id,
@@ -52,6 +63,17 @@ class HotelModel {
         "description": description,
         "latitude": latitude,
         "longitude": longitude,
+        "images": [
+          'assets/images/test1.png',
+          'assets/images/test2.png',
+          'assets/images/test3.webp',
+          'assets/images/test4.jpg',
+          'assets/images/test5.jpg',
+          'assets/images/test6.webp',
+          'assets/images/test7.png',
+          'assets/images/test8.png',
+          'assets/images/test9.png',
+        ],
       }
     };
   }
