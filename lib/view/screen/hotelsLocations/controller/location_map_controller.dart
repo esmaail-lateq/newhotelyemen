@@ -6,7 +6,8 @@ import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart' as map;
 
 import 'package:geolocator_platform_interface/src/models/position.dart' as pos;
 import 'package:newhotelyemeni/core/class/statusRquest.dart';
-import 'package:newhotelyemeni/view/screen/hotelsLocations/test/controller/location_service.dart';
+import 'package:newhotelyemeni/view/screen/hotelsLocations/controller/location_servies.dart';
+
 
 class LocationMapController extends GetxController with WidgetsBindingObserver {
   // and.GeolocatorAndroid geolocatorAndroid = and.GeolocatorAndroid();

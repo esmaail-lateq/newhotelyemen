@@ -19,17 +19,17 @@ var mapIconStyle = {
     8,
     0.0,
     10,
-    0.015,
+    0.7,
     12,
-    0.025,
+    0.9,
     13,
-    0.038,
+    0.9,
   ],
   "icon-allow-overlap": true,
-  "icon-halo-color": null,
-  "icon-halo-blur": 0,
-  "icon-halo-width": 0,
-  "icon-color": "RED"
+  // "icon-halo-color": null,
+  // "icon-halo-blur": 0,
+  // "icon-halo-width": 0,
+  // "icon-color": "red"
 };
 
 var textHotelLayer = {

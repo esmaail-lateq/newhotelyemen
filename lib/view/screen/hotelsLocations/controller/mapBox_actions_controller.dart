@@ -47,16 +47,11 @@ class MapboxActionsController extends GetxController
     mapboxMap.style.styleSourceExists("point_source").then((value) async {
       if (!value) {
         final ByteData bytes =
-            await rootBundle.load('assets/images/hotelLocation.png');
+            // await rootBundle.load('assets/symbols/custom-icon.png');
+            await rootBundle.load('assets/images/symbols/location.png');
         final Uint8List list = bytes.buffer.asUint8List();
-        mapboxMap.style.addStyleImage(
-            "icon",
-            1.0,
-            MbxImage(width: 1024, height: 1024, data: list),
-            true,
-            [],
-            [],
-            null);
+        mapboxMap.style.addStyleImage("icon", 1.0,
+            MbxImage(width: 40, height: 40, data: list), false, [], [], null);
 
         mapboxMap.style.addStyleSource(
             "point_source", json.encode(iconHotelsData(hotels)));
@@ -185,7 +180,6 @@ class MapboxActionsController extends GetxController
   }
 
   drawRouteLowLevel(List<Position> polyline) async {
-  
     final line = LineString(coordinates: polyline);
     final source = await mapboxMapController.style.getSource("source");
     (source as GeoJsonSource).updateGeoJSON(json.encode(line));
@@ -212,6 +206,4 @@ class MapboxActionsController extends GetxController
         ),
         MapAnimationOptions(duration: 1200, startDelay: 0));
   }
-
-  
 }

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
 
-import 'package:newhotelyemeni/view/screen/hotelsLocations/test/map_view.dart';
 import 'package:newhotelyemeni/view/screen/hotelsLocations/view/map_view_screen.dart';
 import 'package:newhotelyemeni/view/widget/elevatedbuttons.dart';
 import 'package:newhotelyemeni/view/widget/fontandtext.dart';
