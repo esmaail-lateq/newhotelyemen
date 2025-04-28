@@ -4,14 +4,14 @@ import 'package:get/get.dart';
 
 import 'package:newhotelyemeni/controller/favorites_controller.dart';
 
-import 'package:newhotelyemeni/view/screen/homescreen/controller/home_page_controller.dart';
+import 'package:newhotelyemeni/view/screen/home/controller/home_page_controller.dart';
 import 'package:newhotelyemeni/controller/user_controller.dart';
 
-import 'package:newhotelyemeni/view/screen/homescreen/view/widget/chooseCityList.dart';
-import 'package:newhotelyemeni/view/screen/homescreen/view/widget/custom_appbar.dart';
-import 'package:newhotelyemeni/view/screen/homescreen/hotel_items.dart';
-import 'package:newhotelyemeni/view/screen/homescreen/view/widget/home_page_top_texts.dart';
-import 'package:newhotelyemeni/view/screen/homescreen/view/widget/hotel_card_view.dart';
+import 'package:newhotelyemeni/view/screen/home/view/widget/chooseCityList.dart';
+import 'package:newhotelyemeni/view/screen/home/view/widget/custom_appbar.dart';
+import 'package:newhotelyemeni/view/screen/home/hotel_items.dart';
+import 'package:newhotelyemeni/view/screen/home/view/widget/home_page_top_texts.dart';
+import 'package:newhotelyemeni/view/screen/home/view/widget/hotel_card_view.dart';
 import 'package:newhotelyemeni/view/screen/hotel_details_screen.dart';
 
 import 'package:newhotelyemeni/view/widget/fontandtext.dart';

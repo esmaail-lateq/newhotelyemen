@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:newhotelyemeni/view/screen/homescreen/controller/home_page_controller.dart';
+import 'package:newhotelyemeni/view/screen/home/controller/home_page_controller.dart';
 import 'package:newhotelyemeni/core/consttint/links.dart';
 import 'package:newhotelyemeni/data/model/catogry_model.dart';
 

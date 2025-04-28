@@ -1,21 +1,16 @@
-
 import 'package:flutter/foundation.dart';
 
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:newhotelyemeni/core/servesies/myserves.dart';
+import 'package:newhotelyemeni/view/screen/MyReservations/view/my_reservation_screen.dart';
 import 'package:newhotelyemeni/view/screen/bookings_screen.dart';
-import 'package:newhotelyemeni/view/screen/favorites_screen.dart';
-import 'package:newhotelyemeni/view/screen/homescreen/view/screen/home_page.dart';
-import 'package:newhotelyemeni/view/screen/setings/settingscreen.dart';
-
-
-
+import 'package:newhotelyemeni/view/screen/favorite/view/favorites_screen.dart';
+import 'package:newhotelyemeni/view/screen/home/view/home_page.dart';
+import 'package:newhotelyemeni/view/screen/setting/settingscreen.dart';
 
 class HomeScreenController extends GetxController {
-
-
   int currentPage = 0;
 
   bool? check;
@@ -24,9 +19,8 @@ class HomeScreenController extends GetxController {
   List<Widget> listPage = [
     HomePage(),
     FavoritesScreen(),
-    BookingsScreen(),
-    settingscreen(),
-
+    MyReservationScreen(),
+    Settingscreen(),
   ];
   List<Map> list_title_appbar = [
     {"title": "Home", "icon": Icons.home},
@@ -57,11 +51,10 @@ class HomeScreenController extends GetxController {
     super.onClose();
   }
 
-  
   // Future<void> showNotification(RemoteMessage message) async {
   //   var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
-  //     'channel_id', 
-  //     'channel_name', 
+  //     'channel_id',
+  //     'channel_name',
   //     channelDescription: 'channel_description',
   //     importance: Importance.max,
   //     priority: Priority.high,

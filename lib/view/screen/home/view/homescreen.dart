@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
 import 'package:newhotelyemeni/core/function/alertExitApp.dart';
-import 'package:newhotelyemeni/view/screen/homescreen/controller/home_screen_controller.dart';
-import 'package:newhotelyemeni/view/screen/homescreen/view/widget/cutom_bottom_nav.dart';
+import 'package:newhotelyemeni/view/screen/home/controller/home_screen_controller.dart';
+import 'package:newhotelyemeni/view/screen/home/view/widget/cutom_bottom_nav.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

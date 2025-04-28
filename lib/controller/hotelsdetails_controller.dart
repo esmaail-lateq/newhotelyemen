@@ -27,7 +27,7 @@ class HotelsDetailsController extends GetxController {
 
   @override
   void onInit() {
-    cateData = Get.arguments['cateogry'];
+    // cateData = Get.arguments['cateogry'];
     hotelid = Get.arguments['hotelId'];
     getServes();
     super.onInit();

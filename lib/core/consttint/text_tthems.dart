@@ -10,4 +10,8 @@ class TextThemsCustom {
       fontSize: 22, fontWeight: FontWeight.bold, color: AppColors.primaryColor);
   static const TextStyle font12GrayColor =
       TextStyle(fontSize: 14, color: AppColors.gray);
+  static const TextStyle font10GrayColor =
+      TextStyle(fontSize: 12, color: AppColors.gray);
+  static const TextStyle appbarText =
+      TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black);
 }

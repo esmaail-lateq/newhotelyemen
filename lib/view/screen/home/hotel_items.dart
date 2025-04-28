@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newhotelyemeni/view/screen/homescreen/controller/home_page_controller.dart';
+import 'package:newhotelyemeni/view/screen/home/controller/home_page_controller.dart';
 import 'package:newhotelyemeni/core/class/handlingStatusView.dart';
 import 'package:newhotelyemeni/core/consttint/links.dart';
 import 'package:newhotelyemeni/data/model/hotelitems_model.dart';
