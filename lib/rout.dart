@@ -13,7 +13,7 @@ import 'package:newhotelyemeni/view/screen/hotel_details_screen.dart';
 import 'package:newhotelyemeni/view/screen/setings/settingscreen.dart';
 import 'package:newhotelyemeni/view/screen/wellcome.dart';
 import 'package:newhotelyemeni/view/screen/aboutscreen.dart';
-import 'package:newhotelyemeni/view/screen/homescreen/homescreen.dart';
+import 'package:newhotelyemeni/view/screen/homescreen/view/screen/homescreen.dart';
 import 'package:newhotelyemeni/view/screen/hotelsdetails.dart';
 
 
