@@ -1,37 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newhotelyemeni/controller/homescreen_controller.dart';
+import 'package:newhotelyemeni/view/screen/homescreen/controller/home_page_controller.dart';
 import 'package:newhotelyemeni/core/class/handlingStatusView.dart';
 import 'package:newhotelyemeni/core/consttint/links.dart';
 import 'package:newhotelyemeni/data/model/hotelitems_model.dart';
 
-class HotelItems extends GetView<HomeScreenController> {
+class HotelItems extends GetView<HomePageController> {
   const HotelItems({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeScreenController>(
+    return GetBuilder<HomePageController>(
       builder: (controller) => HandlingStatusView(
-          statusRquest: controller.statusRquest, widget:
-       Container(
-         height: 300,
-         child: ListView.builder(
-           scrollDirection: Axis.horizontal,
-           itemCount: controller.hotelitems.length,
-           itemBuilder: (context, index) {
-             return Items(
-               model: controller.hotelitems[index],
-             );
-           },
-         ),
-      ),),
+        statusRquest: controller.statusRquest,
+        widget: Container(
+          height: 300,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: controller.hotelitems.length,
+            itemBuilder: (context, index) {
+              return Items(
+                model: controller.hotelitems[index],
+              );
+            },
+          ),
+        ),
+      ),
     );
   }
 }
 
-
 class Items extends StatelessWidget {
-
   ModelHotelitems model;
   Items({super.key, required this.model});
 
@@ -84,7 +83,7 @@ class Items extends StatelessWidget {
                   right: 10,
                   bottom: 10,
                   child: Text(
-                  "${model.hotelNamear}",
+                    "${model.hotelNamear}",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -127,7 +126,9 @@ class Items extends StatelessWidget {
                 Row(
                   children: [
                     Icon(Icons.price_change, size: 18, color: Colors.indigo),
-                    SizedBox(width: 10,),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Text(
                       "${model.pricePerNight}الف يمني", // عرض السعر
                       style: TextStyle(
