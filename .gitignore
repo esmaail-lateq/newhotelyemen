@@ -44,3 +44,4 @@ app.*.map.json
 .env
 /lib/view/screen/hotelsLocations/test
 lib/view/screen/hotelsLocations/controller/test.dart
+/android/app
