@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:newhotelyemeni/core/class/failer.dart';
 import 'package:newhotelyemeni/core/class/statusRquest.dart';
 import 'package:newhotelyemeni/core/consttint/images.dart';
+import 'package:newhotelyemeni/core/sharedWidget/snakbar.dart';
 
-apiErorrsDialog(StatusRquest status) {
+apiErorrsDialog(Failure failur) {
+  StatusRquest status = failur.status;
+  String massage = failur.message['message'];
   switch (status) {
     case StatusRquest.authFailer:
       Get.dialog(ErorrMasseageAnimation(
@@ -13,7 +17,7 @@ apiErorrsDialog(StatusRquest status) {
       break;
     case StatusRquest.serverfailure:
       Get.dialog(ErorrMasseageAnimation(
-        animationAsset: AppImages.Offline,
+        animationAsset: AppImages.ServerFaile,
       ));
 
       break;
@@ -40,7 +44,7 @@ apiErorrsDialog(StatusRquest status) {
     case StatusRquest.badRequest:
       // TODO: Handle this case.
       Get.dialog(ErorrMasseageAnimation(
-        animationAsset: AppImages.Loading,
+        animationAsset: AppImages.ServerFaile,
       ));
       break;
 
@@ -50,6 +54,13 @@ apiErorrsDialog(StatusRquest status) {
         animationAsset: AppImages.Nodata,
       ));
       break;
+    case StatusRquest.notValidate:
+      // TODO: Handle this case.
+      if (massage == 'The provided credentials are incorrect.') {
+        errorSnakbar('خطء', 'كلمة السر او البريد الاكتروني غير صحيح');
+      } else if (massage == 'Validation failed') {
+        errorSnakbar('خطء', ' البريد الالكتروني هذا مسجل من قبل  ');
+      }
   }
 }
 
@@ -80,7 +91,23 @@ class ErorrMasseageAnimation extends StatelessWidget {
                           Icons.close,
                           color: Colors.white,
                         ))),
-                Lottie.asset(animationAsset, height: 250, width: 250),
+                Lottie.asset(
+                  animationAsset,
+                  height: 250,
+                  width: 250,
+                  delegates: LottieDelegates(
+                    values: [
+                      ValueDelegate.color(
+                        const [
+                          '**',
+                          'Shape Layer 1',
+                          'Fill 1'
+                        ], // المسار للطبقة
+                        value: Colors.red, // اللون الجديد
+                      ),
+                    ],
+                  ),
+                ),
               ],
             )),
       ),

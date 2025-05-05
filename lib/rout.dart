@@ -1,27 +1,28 @@
 import 'package:get/get.dart';
 import 'package:newhotelyemeni/core/consttint/rout_name.dart';
 import 'package:newhotelyemeni/core/my_middleware.dart';
-import 'package:newhotelyemeni/view/screen/auth/forgetpassword/checkpassword.dart';
-import 'package:newhotelyemeni/view/screen/auth/forgetpassword/resetpassword.dart';
-import 'package:newhotelyemeni/view/screen/auth/forgetpassword/verify_Repassword.dart';
-import 'package:newhotelyemeni/view/screen/auth/login.dart';
-import 'package:newhotelyemeni/view/screen/auth/onboarder_auth/onboader_screen.dart';
-import 'package:newhotelyemeni/view/screen/auth/signup.dart';
-import 'package:newhotelyemeni/view/screen/auth/success_signup.dart';
-import 'package:newhotelyemeni/view/screen/auth/verfiy_signup.dart';
-import 'package:newhotelyemeni/view/screen/hotel_details_screen.dart';
-import 'package:newhotelyemeni/view/screen/setting/settingscreen.dart';
-import 'package:newhotelyemeni/view/screen/wellcome.dart';
-import 'package:newhotelyemeni/view/screen/aboutscreen.dart';
-import 'package:newhotelyemeni/view/screen/home/view/homescreen.dart';
-import 'package:newhotelyemeni/view/screen/hotelsdetails.dart';
+import 'package:newhotelyemeni/features/MyReservations/view/screen/bookings_details.dart';
+import 'package:newhotelyemeni/features/auth/forgetpassword/checkpassword.dart';
+import 'package:newhotelyemeni/features/auth/forgetpassword/resetpassword.dart';
+import 'package:newhotelyemeni/features/auth/forgetpassword/verify_Repassword.dart';
+import 'package:newhotelyemeni/features/auth/login/login.dart';
+import 'package:newhotelyemeni/features/auth/onboarder_auth/onboader_screen.dart';
+import 'package:newhotelyemeni/features/auth/signup/signup.dart';
+import 'package:newhotelyemeni/features/auth/success_signup.dart';
+import 'package:newhotelyemeni/features/auth/verify_email/verfiy_signup.dart';
+import 'package:newhotelyemeni/features/hotelDetiles/hotel_details_screen.dart';
+import 'package:newhotelyemeni/features/setting/settingscreen.dart';
+import 'package:newhotelyemeni/features/wellcome.dart';
+import 'package:newhotelyemeni/features/setting/aboutscreen.dart';
+import 'package:newhotelyemeni/features/home/view/homescreen.dart';
+
 
 List<GetPage<dynamic>>? getPages = [
   // GetPage(name: "/", page:()=> Wellcome()),
   GetPage(name: '/', page: () => const Login(), middlewares: [Mymiddleware()]),
   GetPage(name: RoutName.aboutScreen, page: () => AboutScreen()),
   GetPage(name: RoutName.homePage, page: () => HomeScreen()),
-  GetPage(name: RoutName.hotelsDetails, page: () => HotelsDetails()),
+  // GetPage(name: RoutName.hotelsDetails, page: () => HotelsDetails()),
   GetPage(name: RoutName.settingscreen, page: () => Settingscreen()),
 
   //Auth
@@ -33,4 +34,5 @@ List<GetPage<dynamic>>? getPages = [
   GetPage(name: RoutName.checkPassword, page: () => CheckPassword()),
   GetPage(name: RoutName.verifyRepassword, page: () => VerifyResatePassword()),
   GetPage(name: RoutName.repassword, page: () => ResetPassword()),
+  GetPage(name: RoutName.bookingDetails, page: () => BookingDetailsPage()),
 ];

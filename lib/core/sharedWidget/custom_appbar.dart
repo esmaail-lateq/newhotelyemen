@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
 
-PreferredSize customAppBar(String title, {double height = 50}) {
+PreferredSize customAppBar(String title,
+    {double height = 50, Color color = AppColors.primaryColor}) {
   return PreferredSize(
     preferredSize: Size.fromHeight(height), // ارتفاع الـ AppBar
     child: AppBar(
@@ -9,7 +10,7 @@ PreferredSize customAppBar(String title, {double height = 50}) {
       flexibleSpace: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [AppColors.primaryColor, AppColors.primaryColor],
+            colors: [color, AppColors.primaryColor],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),

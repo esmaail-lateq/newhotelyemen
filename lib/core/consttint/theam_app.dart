@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
 
 ThemeData themArabic = ThemeData(
+  fontFamily: 'Arial',
   primarySwatch: Colors.blue,
   primaryColor: AppColors.background,
   hintColor: Colors.amber[600],

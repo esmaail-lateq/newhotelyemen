@@ -10,9 +10,9 @@ import 'package:newhotelyemeni/core/servesies/myserves.dart';
 
 import 'package:newhotelyemeni/rout.dart';
 
-import 'package:newhotelyemeni/view/screen/auth/login.dart';
+import 'package:newhotelyemeni/features/auth/login/login.dart';
 
-import 'package:newhotelyemeni/view/widget/fontandtext.dart';
+import 'package:newhotelyemeni/core/widget/fontandtext.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

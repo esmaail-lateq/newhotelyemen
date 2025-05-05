@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
-import 'package:newhotelyemeni/view/screen/hotelsLocations/controller/hotel_controller.dart';
+import 'package:newhotelyemeni/features/hotelsLocations/controller/hotel_controller.dart';
 
 var pointLayer = {
   "id": "point_layer",

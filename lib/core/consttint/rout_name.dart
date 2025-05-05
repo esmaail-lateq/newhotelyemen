@@ -11,4 +11,5 @@ class RoutName {
   static String settingscreen = "/settingscreen";
   static String hotelsDetails = "/HotelsDetails";
   static String aboutScreen = "/AboutScreen";
+  static String bookingDetails = "/bookingDetails";
 }

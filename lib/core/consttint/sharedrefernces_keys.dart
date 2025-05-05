@@ -6,4 +6,5 @@ class SharedreferncesKeys {
   static String role = 'role';
   static String token = 'token';
   static String step = 'step';
+  static String virefy = 'virefy';
 }

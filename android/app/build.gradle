@@ -50,6 +50,24 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
+    signingConfigs {
+    release {
+        if (project.hasProperty('keyProperties')) {
+            def keyProperties = new Properties()
+            keyProperties.load(new FileInputStream(rootProject.file("key.properties")))
+            storeFile file(keyProperties['storeFile'])
+            storePassword keyProperties['storePassword']
+            keyAlias keyProperties['keyAlias']
+            keyPassword keyProperties['keyPassword']
+        }
+    }
+    // debug {
+    //     storeFile file(keyProperties['storeFile'])
+    //     storePassword keyProperties['storePassword']
+    //     keyAlias keyProperties['keyAlias']
+    //     keyPassword keyProperties['keyPassword']
+    // }
+}
 
     buildTypes {
         release {
@@ -57,6 +75,9 @@ android {
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
         }
+    //      debug {
+    //     signingConfig signingConfigs.debug
+    // }
     }
 }
 

@@ -7,6 +7,7 @@ enum StatusRquest{
   offline,
   badRequest,
   authFailer,
+  notValidate,
 
   notfound
 

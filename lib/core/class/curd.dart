@@ -4,101 +4,175 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
 import 'package:newhotelyemeni/api_links.dart';
+import 'package:newhotelyemeni/core/class/failer.dart';
 
 import 'package:newhotelyemeni/core/class/statusRquest.dart';
 import 'package:newhotelyemeni/core/function/chackinternt.dart';
 import 'package:path/path.dart';
+import 'package:pretty_http_logger/pretty_http_logger.dart';
 
 class CURD {
-  Future<Either<StatusRquest, Map>> postData(
-      String linkurl, data, Map<String, String>? header,
-      {String requestType = 'post'}) async {
+  final HttpWithMiddleware http = HttpWithMiddleware.build(middlewares: [
+    HttpLogger(logLevel: LogLevel.BODY),
+  ]);
+  Future<Either<Failure, Map>> postData(
+    String linkurl,
+    dynamic data,
+    Map<String, String>? header, {
+    String requestType = 'post',
+  }) async {
     try {
       if (await CheckInternet()) {
-        http.Response? response;
+        var response;
+
+        final uri = Uri.parse(linkurl);
 
         switch (requestType) {
           case 'post':
-            response = await http.post(
-                Uri.parse('${AppLinksApi.protocol}${AppLinksApi.host}$linkurl'),
-                headers: header,
-                body: data);
-
+            response = await http.post(uri, headers: header, body: data);
             break;
           case 'put':
-            response = await http.put(
-                Uri.parse('${AppLinksApi.protocol}${AppLinksApi.host}$linkurl'),
-                headers: header,
-                body: data);
+            response = await http.put(uri, headers: header, body: data);
             break;
           case 'delet':
-            response = await http.delete(Uri.http(AppLinksApi.host, linkurl),
-                body: data);
+            response = await http.delete(uri, body: data);
             break;
           case 'get':
-            response = await http.get(
-                Uri.http(
-                  AppLinksApi.host,
-                  linkurl,
-                  // data,
-                ),
-                headers: header);
+            response = await http.get(uri, headers: header);
             break;
           case 'mapbox':
-            response = await http.get(
-               Uri.parse(
-      linkurl),
-                headers: header);
+            response = await http.get(Uri.parse(linkurl), headers: header);
             break;
         }
+
         if (kDebugMode) {
-          print(
-              '=================================================================curd');
-          print(response!.statusCode);
-          print(response.body);
+          print('================ CURD Response =================');
+          print('Status: ${response!.statusCode}');
+          print('Body: ${response.body}');
         }
 
         if (response!.statusCode == 200 || response.statusCode == 201) {
           Map responsebody = jsonDecode(response.body);
-          if (kDebugMode) {
-            print(
-                '=================================================================curd');
-            print('1 done =============================');
-
-            print(responsebody);
-          }
-
           return Right(responsebody);
-        } else if (response.statusCode == 404) {
-          return const Left(StatusRquest.notfound);
-        }
-         else if (response.statusCode == 401) {
-          return const Left(StatusRquest.authFailer);
-        } 
-         else if (response.statusCode == 400) {
-          return const Left(StatusRquest.badRequest);
-        } 
-         else if (response.statusCode == 500) {
-          return const Left(StatusRquest.serverfailure);
-        } 
-        else {
-          return const Left(StatusRquest.failure);
+        } else {
+          final Map body = jsonDecode(response.body);
+          final msg = body ;
+
+          switch (response.statusCode) {
+            case 400:
+              return Left(Failure(msg, StatusRquest.badRequest));
+            case 401:
+              return Left(Failure(msg, StatusRquest.authFailer));
+            case 404:
+              return Left(Failure(msg, StatusRquest.notfound));
+            case 500:
+              return Left(Failure(msg, StatusRquest.serverfailure));
+            case 422:
+              return Left(Failure(msg, StatusRquest.notValidate));
+            default:
+              return Left(Failure(msg, StatusRquest.failure));
+          }
         }
       } else {
-        return const Left(StatusRquest.offline);
+        return Left(Failure(
+            {'message': "لا يوجد اتصال بالإنترنت"}, StatusRquest.offline));
       }
-    } catch (_) {
+    } catch (e) {
       if (kDebugMode) {
-        print(
-            '=====================$_============================================chatch erorr');
+        print('================== Error in CURD ==================');
+        print(e.toString());
       }
-
-      return const Left(StatusRquest.failure);
+      return Left(Failure(
+          {'message': "حدث خطأ أثناء الاتصال بالخادم"}, StatusRquest.failure));
     }
   }
 }
+// class CURD {
+//   final HttpWithMiddleware http = HttpWithMiddleware.build(middlewares: [
+//     HttpLogger(logLevel: LogLevel.BODY),
+//   ]);
+//   Future<Either<StatusRquest, Map>> postData(
+//       String linkurl, data, Map<String, String>? header,
+//       {String requestType = 'post'}) async {
+//     try {
+//       if (await CheckInternet()) {
+//         var response;
+
+//         switch (requestType) {
+//           case 'post':
+//             response = await http.post(
+//                 Uri.parse('${AppLinksApi.protocol}${AppLinksApi.host}$linkurl'),
+//                 headers: header,
+//                 body: data);
+
+//             break;
+//           case 'put':
+//             response = await http.put(
+//                 Uri.parse('${AppLinksApi.protocol}${AppLinksApi.host}$linkurl'),
+//                 headers: header,
+//                 body: data);
+//             break;
+//           case 'delet':
+//             response = await http.delete(Uri.http(AppLinksApi.host, linkurl),
+//                 body: data);
+//             break;
+//           case 'get':
+//             response = await http.get(
+//                 Uri.http(
+//                   AppLinksApi.host,
+//                   linkurl,
+//                   // data,
+//                 ),
+//                 headers: header);
+//             break;
+//           case 'mapbox':
+//             response = await http.get(Uri.parse(linkurl), headers: header);
+//             break;
+//         }
+//         if (kDebugMode) {
+//           print(
+//               '=================================================================curd');
+//           print(response!.statusCode);
+//           print(response.body);
+//         }
+
+//         if (response!.statusCode == 200 || response.statusCode == 201) {
+//           Map responsebody = jsonDecode(response.body);
+//           if (kDebugMode) {
+//             print(
+//                 '=================================================================curd');
+//             print('1 done =============================');
+
+//             print(responsebody);
+//           }
+
+//           return Right(responsebody);
+//         } else if (response.statusCode == 404) {
+//           return const Left(StatusRquest.notfound);
+//         } else if (response.statusCode == 401) {
+//           return const Left(StatusRquest.authFailer);
+//         } else if (response.statusCode == 400) {
+//           return const Left(StatusRquest.badRequest);
+//         } else if (response.statusCode == 500) {
+//           return const Left(StatusRquest.serverfailure);
+//         } else {
+//           return const Left(StatusRquest.failure);
+//         }
+//       } else {
+//         return const Left(StatusRquest.offline);
+//       }
+//     } catch (_) {
+//       if (kDebugMode) {
+//         print(
+//             '=====================$_============================================chatch erorr');
+//       }
+
+//       return const Left(StatusRquest.failure);
+//     }
+//   }
+// }
 
 
 
