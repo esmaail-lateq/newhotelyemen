@@ -7,7 +7,8 @@ import 'package:newhotelyemeni/core/consttint/text_tthems.dart';
 import 'package:newhotelyemeni/features/MyReservations/view/widget/helper_sidget.dart';
 
 class BookingDetailsPage extends StatelessWidget {
-  const BookingDetailsPage({super.key});
+ final  Widget actionBotton;
+  const BookingDetailsPage({super.key, required this.actionBotton});
 
   @override
   Widget build(BuildContext context) {
@@ -94,24 +95,7 @@ class BookingDetailsPage extends StatelessWidget {
             const SizedBox(height: 12),
             buildRowInfo(),
             const SizedBox(height: 24),
-            Center(
-              child: InkWell(
-                onTap: () => Get.toNamed(RoutName.bookingDetails),
-                child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 50),
-                    padding: EdgeInsets.symmetric(horizontal: 5),
-                    alignment: Alignment.center,
-                    // width: 100,
-                    height: 50,
-                    decoration: BoxDecoration(
-                        color: AppColors.gradint,
-                        borderRadius: BorderRadius.circular(12)),
-                    child: Text(
-                      'الحجز مرة اخرى',
-                      style: TextThemsCustom.font12WhithColor,
-                    )),
-              ),
-            )
+           actionBotton
           ],
         ),
       ),

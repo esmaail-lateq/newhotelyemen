@@ -4,6 +4,7 @@ import 'package:get/instance_manager.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
 import 'package:newhotelyemeni/core/consttint/rout_name.dart';
 import 'package:newhotelyemeni/core/consttint/text_tthems.dart';
+import 'package:newhotelyemeni/features/MyReservations/view/screen/bookings_details.dart';
 import 'package:newhotelyemeni/features/MyReservations/view/widget/helper_sidget.dart';
 import 'package:newhotelyemeni/core/widget/auth/customebuttone.dart';
 
@@ -41,7 +42,25 @@ class _ReservationCardDitailState extends State<ReservationCardDitail> {
           children: [
             // const SizedBox(height: 12),
             InkWell(
-              onTap: () => Get.toNamed(RoutName.bookingDetails),
+              onTap: () => Get.to(() => BookingDetailsPage(
+                      actionBotton: Center(
+                    child: InkWell(
+                      onTap: () {},
+                      child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 50),
+                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          alignment: Alignment.center,
+                          // width: 100,
+                          height: 50,
+                          decoration: BoxDecoration(
+                              color: AppColors.gradint,
+                              borderRadius: BorderRadius.circular(12)),
+                          child: Text(
+                            'الحجز مرة اخرى',
+                            style: TextThemsCustom.font12WhithColor,
+                          )),
+                    ),
+                  ))),
               child: Container(
                 // decoration: BoxDecoration(
                 //   border: Border.all(color: Colors.grey.shade300),
@@ -145,7 +164,25 @@ class _ReservationCardDitailState extends State<ReservationCardDitail> {
                   // const SizedBox(height: 8),
 
                   InkWell(
-                    onTap: () => Get.toNamed(RoutName.bookingDetails),
+                    onTap: () => Get.to(() => BookingDetailsPage(
+                            actionBotton: Center(
+                          child: InkWell(
+                            onTap: () {},
+                            child: Container(
+                                margin: EdgeInsets.symmetric(horizontal: 50),
+                                padding: EdgeInsets.symmetric(horizontal: 5),
+                                alignment: Alignment.center,
+                                // width: 100,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    color: AppColors.gradint,
+                                    borderRadius: BorderRadius.circular(12)),
+                                child: Text(
+                                  'الحجز مرة اخرى',
+                                  style: TextThemsCustom.font12WhithColor,
+                                )),
+                          ),
+                        ))),
                     child: Container(
                         alignment: Alignment.center,
                         width: 110,

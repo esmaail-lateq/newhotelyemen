@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
+import 'package:newhotelyemeni/core/consttint/text_tthems.dart';
+import 'package:newhotelyemeni/features/MyReservations/view/screen/bookings_details.dart';
 
 Widget buildHeaderSection() {
   return Column(
@@ -141,7 +145,33 @@ Widget buildPriceSection() {
 
 Widget buildShowOptionsButton() {
   return InkWell(
-    onTap: () {},
+    onTap: () {
+      Get.to(() => BookingDetailsPage(
+              actionBotton: Center(
+            child: InkWell(
+              onTap: () {
+                Get.to(Scaffold(
+                  appBar: AppBar(
+                    title: Text('طريقة الدفع'),
+                  ),
+                ));
+              },
+              child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 50),
+                  padding: EdgeInsets.symmetric(horizontal: 5),
+                  alignment: Alignment.center,
+                  // width: 100,
+                  height: 50,
+                  decoration: BoxDecoration(
+                      color: AppColors.text4,
+                      borderRadius: BorderRadius.circular(12)),
+                  child: Text(
+                    'تاكيد الحجز',
+                    style: TextThemsCustom.font12WhithColor,
+                  )),
+            ),
+          )));
+    },
     child: Container(
       padding: EdgeInsets.symmetric(horizontal: 30, vertical: 6),
       decoration: BoxDecoration(

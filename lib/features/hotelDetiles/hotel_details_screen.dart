@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:newhotelyemeni/features/hotelDetiles/controller/hotelsdetails_controller.dart';
 import 'package:newhotelyemeni/core/consttint/images.dart';
 import 'package:newhotelyemeni/features/home/data/model/hotel_model.dart';
-import 'package:newhotelyemeni/features/MyReservations/booking_screen.dart';
+// import 'package:newhotelyemeni/features/MyReservations/booking_screen.dart';
 import 'package:newhotelyemeni/core/widget/fontandtext.dart';
 
 import '../../core/consttint/links.dart';

@@ -34,5 +34,5 @@ List<GetPage<dynamic>>? getPages = [
   GetPage(name: RoutName.checkPassword, page: () => CheckPassword()),
   GetPage(name: RoutName.verifyRepassword, page: () => VerifyResatePassword()),
   GetPage(name: RoutName.repassword, page: () => ResetPassword()),
-  GetPage(name: RoutName.bookingDetails, page: () => BookingDetailsPage()),
+  // GetPage(name: RoutName.bookingDetails, page: () => BookingDetailsPage()),
 ];
