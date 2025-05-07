@@ -4,13 +4,16 @@ import 'package:get/get.dart';
 import 'package:get/utils.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
 import 'package:newhotelyemeni/core/consttint/text_tthems.dart';
-import 'package:newhotelyemeni/features/hotelDetiles/view/celender_test.dart';
+import 'package:newhotelyemeni/features/celender/celender_controller.dart';
+import 'package:newhotelyemeni/features/celender/celender_screen.dart';
 
 class RoomsHotel extends StatelessWidget {
   const RoomsHotel({super.key});
 
   @override
   Widget build(BuildContext context) {
+    CelenderController celenderController =
+        Get.put<CelenderController>(CelenderController());
     return Padding(
         padding: const EdgeInsets.all(15),
         child: Column(
@@ -24,13 +27,17 @@ class RoomsHotel extends StatelessWidget {
                 style: TextThemsCustom.font16GrayColorbold,
               ),
             ),
+            SizedBox(
+              height: 20,
+            ),
             Row(
               children: [
                 InkWell(
                   onTap: () {
-                    Get.to(MyHomePage(
-                      title: 'test',
-                    ));
+                    Get.to(CelenderScreen());
+                    // Get.to(MyHomePage(
+                    //   title: 'test',
+                    // ));
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -63,26 +70,28 @@ class RoomsHotel extends StatelessWidget {
                                     fontWeight: FontWeight.w800))
                           ],
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              '06 May',
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.text4),
-                            ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Text('07 May',
+                        Obx(
+                          () => Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                celenderController.arriveDateDayMonth.value,
                                 style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.bold,
-                                    color: AppColors.text4))
-                          ],
-                        ),
+                                    color: AppColors.text4),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(celenderController.leaveDateDayMonth.value,
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.text4))
+                            ],
+                          ),
+                        )
                       ],
                     ),
                   ),
@@ -118,7 +127,8 @@ class RoomsHotel extends StatelessWidget {
             ),
             Expanded(
               child: ListView.builder(
-                padding: const EdgeInsets.all(20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 0, vertical: 20),
                 itemCount: 10,
                 itemBuilder: (context, index) => RoomCard(
                   title: 'غرفة دبلوكس - إطلالة على البسفور',
