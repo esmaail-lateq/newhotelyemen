@@ -1,6 +1,10 @@
+import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/utils.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
 import 'package:newhotelyemeni/core/consttint/text_tthems.dart';
+import 'package:newhotelyemeni/features/hotelDetiles/view/celender_test.dart';
 
 class RoomsHotel extends StatelessWidget {
   const RoomsHotel({super.key});
@@ -22,58 +26,65 @@ class RoomsHotel extends StatelessWidget {
             ),
             Row(
               children: [
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 0.5,
-                        color: Colors.grey,
-                      ),
-                      borderRadius: BorderRadius.circular(8)),
-                  child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.start,
-                    // crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            'تاريخ الوصول',
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 11,
-                                fontWeight: FontWeight.w800),
-                          ),
-                          SizedBox(
-                            width: 6,
-                          ),
-                          Text('تاريخ المغادرة',
+                InkWell(
+                  onTap: () {
+                    Get.to(MyHomePage(
+                      title: 'test',
+                    ));
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 0.5,
+                          color: Colors.grey,
+                        ),
+                        borderRadius: BorderRadius.circular(8)),
+                    child: Column(
+                      // mainAxisAlignment: MainAxisAlignment.start,
+                      // crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'تاريخ الوصول',
                               style: TextStyle(
                                   color: Colors.grey,
                                   fontSize: 11,
-                                  fontWeight: FontWeight.w800))
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            '06 May',
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.text4),
-                          ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Text('07 May',
+                                  fontWeight: FontWeight.w800),
+                            ),
+                            SizedBox(
+                              width: 6,
+                            ),
+                            Text('تاريخ المغادرة',
+                                style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w800))
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              '06 May',
                               style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,
-                                  color: AppColors.text4))
-                        ],
-                      ),
-                    ],
+                                  color: AppColors.text4),
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Text('07 May',
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.text4))
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -269,3 +280,21 @@ class RoomCard extends StatelessWidget {
     );
   }
 }
+
+
+// Widget celendarWidget(){
+//   return CalendarDatePicker2WithActionButtons(
+//   config: CalendarDatePicker2WithActionButtonsConfig(
+//     firstDayOfWeek: 1,
+//     calendarType: CalendarDatePicker2Type.range,
+//     selectedDayTextStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+//     selectedDayHighlightColor: Colors.purple[800],
+//     centerAlignModePicker: true,
+//     customModePickerIcon: SizedBox(),
+//     dayBuilder: _yourDayBuilder,
+//     yearBuilder: _yourYearBuilder,
+//   ),
+//   value: _dates,
+//   onValueChanged: (dates) => _dates = dates,
+// );
+// }

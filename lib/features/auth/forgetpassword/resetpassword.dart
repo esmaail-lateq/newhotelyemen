@@ -5,7 +5,7 @@ import 'package:newhotelyemeni/features/auth/forgetpassword/controller/resetpass
 import 'package:newhotelyemeni/core/sharedWidget/custom_appbar.dart';
 import 'package:newhotelyemeni/features/auth/clipe.dart';
 import 'package:newhotelyemeni/core/widget/auth/customebuttone.dart';
-import 'package:newhotelyemeni/core/widget/custombuttom.dart';
+
 import 'package:newhotelyemeni/core/widget/customtextform.dart';
 
 import '../../../core/consttint/colors.dart';

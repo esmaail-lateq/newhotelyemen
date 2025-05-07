@@ -30,6 +30,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       translations: MyTranzlation(),
       locale: controller.langage,
+      fallbackLocale: const Locale('ar'),
+
       debugShowCheckedModeBanner: false,
       title: 'YemenHotel',
       theme: themArabic,

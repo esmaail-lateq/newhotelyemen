@@ -7,7 +7,7 @@ import 'package:newhotelyemeni/core/consttint/images.dart';
 import 'package:newhotelyemeni/core/consttint/rout_name.dart';
 import 'package:newhotelyemeni/core/consttint/text_tthems.dart';
 import 'package:newhotelyemeni/core/widget/auth/customebuttone.dart';
-import 'package:newhotelyemeni/core/widget/custombuttom.dart';
+
 
 class SuccessSignup extends StatelessWidget {
   const SuccessSignup({super.key});

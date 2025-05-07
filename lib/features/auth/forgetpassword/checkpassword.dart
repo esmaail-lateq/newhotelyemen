@@ -9,7 +9,7 @@ import '../../../core/consttint/colors.dart';
 import '../clipe.dart';
 import '../../../core/widget/auth/custometextform.dart';
 import '../../../core/widget/auth/customtext.dart';
-import '../../../core/widget/custombuttom.dart';
+
 
 class CheckPassword extends StatelessWidget {
   const CheckPassword({super.key});
