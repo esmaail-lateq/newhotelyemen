@@ -1,5 +1,6 @@
 import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
+import 'package:newhotelyemeni/core/consttint/colors.dart';
 import 'package:newhotelyemeni/core/consttint/text_tthems.dart';
 import 'package:newhotelyemeni/features/hotelDetiles/view/widget/small_loaction_map.dart';
 
@@ -23,7 +24,7 @@ class HotleInformation extends StatelessWidget {
             width: double.infinity,
             height: 45,
             decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 217, 69, 69),
+                color: AppColors.text4,
                 borderRadius: BorderRadius.circular(12)),
             child: Text(
               'اختر غرفتك ',

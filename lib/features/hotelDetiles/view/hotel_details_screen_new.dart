@@ -5,7 +5,7 @@ import 'package:newhotelyemeni/core/consttint/text_tthems.dart';
 import 'package:newhotelyemeni/features/MyReservations/booking_screen.dart';
 import 'package:newhotelyemeni/features/home/data/model/hotel_model.dart';
 import 'package:newhotelyemeni/features/hotelDetiles/view/hotel_information.dart';
-import 'package:newhotelyemeni/features/hotelDetiles/view/rooms_hotel.dart';
+import 'package:newhotelyemeni/features/rooms/rooms_hotel.dart';
 import 'package:newhotelyemeni/features/hotelDetiles/view/widget/cutom_appbar.dart';
 import 'package:newhotelyemeni/features/hotelDetiles/view/widget/small_loaction_map.dart';
 import 'package:newhotelyemeni/features/hotelDetiles/view/widget/top_page_section.dart';
@@ -150,12 +150,12 @@ class _DetailScreenState extends State<HotelDetailsScreenNew>
           body: TabBarView(
             controller: _tabController,
             children: [
-              BookingScreen(
-                hotel: {},
-              ),
-              // HotleInformation(
-              //   tabController: _tabController,
+              // BookingScreen(
+              //   hotel: {},
               // ),
+              HotleInformation(
+                tabController: _tabController,
+              ),
               RoomsHotel(),
 
               // _TabContent(title: 'خريطة الموقع'),
