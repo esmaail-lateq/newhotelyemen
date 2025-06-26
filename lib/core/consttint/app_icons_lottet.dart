@@ -1,4 +1,4 @@
-class AppImages {
+class AppIconsLotit {
   static const String rootImage = "assets/images";
   static const String rootanimation = "assets/animation";
 

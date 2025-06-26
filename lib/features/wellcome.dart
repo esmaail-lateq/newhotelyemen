@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-import 'package:newhotelyemeni/core/consttint/images.dart';
+import 'package:newhotelyemeni/core/consttint/app_icons_lottet.dart';
 
 class Wellcome extends StatelessWidget {
   const Wellcome({super.key});
@@ -19,7 +19,7 @@ class Wellcome extends StatelessWidget {
           alignment: Alignment.center,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image:AssetImage(AppImages.Imlogo),
+              image:AssetImage(AppIconsLotit.Imlogo),
               fit: BoxFit.fill,
             ),
           ),

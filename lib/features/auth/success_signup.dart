@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:lottie/lottie.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
-import 'package:newhotelyemeni/core/consttint/images.dart';
+import 'package:newhotelyemeni/core/consttint/app_icons_lottet.dart';
 import 'package:newhotelyemeni/core/consttint/rout_name.dart';
 import 'package:newhotelyemeni/core/consttint/text_tthems.dart';
 import 'package:newhotelyemeni/core/widget/auth/customebuttone.dart';
@@ -31,7 +31,7 @@ class SuccessSignup extends StatelessWidget {
 
           child: Column(children: [
             Lottie.asset(
-              AppImages.Success,
+              AppIconsLotit.Success,
               width: 500,
               height: 400,
               repeat: false,

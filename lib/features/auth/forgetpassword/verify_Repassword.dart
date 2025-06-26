@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:newhotelyemeni/core/consttint/images.dart';
+import 'package:newhotelyemeni/core/consttint/app_icons_lottet.dart';
 import 'package:newhotelyemeni/features/auth/clipe.dart';
 
 import '../test-controller/forgetpassword/verifyRsatepassword_controller.dart';

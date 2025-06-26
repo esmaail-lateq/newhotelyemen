@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:newhotelyemeni/core/consttint/images.dart';
+import 'package:newhotelyemeni/core/consttint/app_icons_lottet.dart';
 
 class LoagingDialog extends StatelessWidget {
   const LoagingDialog({super.key});
@@ -18,7 +18,7 @@ class LoagingDialog extends StatelessWidget {
           child: Container(
               margin: EdgeInsets.only(bottom: 60),
               // color: Colors.white,
-              child: Lottie.asset(AppImages.Loading, height: 300, width: 300)),
+              child: Lottie.asset(AppIconsLotit.Loading, height: 300, width: 300)),
         ),
       ),
     );

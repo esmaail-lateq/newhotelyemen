@@ -12,6 +12,7 @@ class AppColors {
   static const Color background = Colors.white10;
   static const Color white = Colors.white;
   static const Color gray = Colors.grey;
+  static const Color black = Colors.black;
   static const Color text2 = Colors.white;
   static const Color text1 = Colors.cyanAccent;
   static const Color text3 = Colors.cyan;

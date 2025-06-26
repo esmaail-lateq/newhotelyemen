@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:newhotelyemeni/features/auth/onboarder_auth/onboarder_content.dart';
 
-import '../../../core/consttint/images.dart';
+import '../../../core/consttint/app_icons_lottet.dart';
 class OnboaderScreen extends StatefulWidget {
   const OnboaderScreen({super.key});
 
@@ -35,7 +35,7 @@ class _OnboaderScreenState extends State<OnboaderScreen> {
         backgroundColor: Colors.transparent,
         systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
-      body: Image.asset(AppImages.Imlogo ,
+      body: Image.asset(AppIconsLotit.Imlogo ,
         fit: BoxFit.cover,
         width: double.infinity,),
     );

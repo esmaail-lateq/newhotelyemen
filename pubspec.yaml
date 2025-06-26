@@ -60,6 +60,8 @@ dependencies:
   pretty_http_logger: ^1.0.2
   google_sign_in: ^6.3.0
   expandable_text: 2.3.0
+  card_swiper: ^3.0.1
+ 
   # animated_custom_dropdown: ^3.1.1
 
 dev_dependencies:

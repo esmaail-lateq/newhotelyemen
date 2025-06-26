@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 
@@ -27,7 +28,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     LocalController controller = Get.put(LocalController());
     Get.put(CustomTextStyles());
-    return GetMaterialApp(
+    return ScreenUtilInit(
+      designSize: Size(375, 812),
+      minTextAdapt: true,
+      child: GetMaterialApp(
       translations: MyTranzlation(),
       locale: controller.langage,
       fallbackLocale: const Locale('ar'),
@@ -41,6 +45,6 @@ class MyApp extends StatelessWidget {
       // home: Login(),
       // home: Language(),
       getPages: getPages,
-    );
+    ));
   }
 }

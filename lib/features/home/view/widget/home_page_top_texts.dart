@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:newhotelyemeni/core/consttint/text_tthems.dart';
 
 class HomePageTopTexts extends StatelessWidget {
-  const HomePageTopTexts({super.key});
+  final String text;
+  const HomePageTopTexts({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class HomePageTopTexts extends StatelessWidget {
         children: [
           Container(
             child: Text(
-              'فرز الفنادق حسب:',
+              text,
               style: TextThemsCustom.font22BlackBolde,
             ),
           ),

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:newhotelyemeni/core/class/failer.dart';
 import 'package:newhotelyemeni/core/class/statusRquest.dart';
-import 'package:newhotelyemeni/core/consttint/images.dart';
+import 'package:newhotelyemeni/core/consttint/app_icons_lottet.dart';
 import 'package:newhotelyemeni/core/sharedWidget/snakbar.dart';
 
 apiErorrsDialog(Failure failur) {
@@ -12,12 +12,12 @@ apiErorrsDialog(Failure failur) {
   switch (status) {
     case StatusRquest.authFailer:
       Get.dialog(ErorrMasseageAnimation(
-        animationAsset: AppImages.Anlogin,
+        animationAsset: AppIconsLotit.Anlogin,
       ));
       break;
     case StatusRquest.serverfailure:
       Get.dialog(ErorrMasseageAnimation(
-        animationAsset: AppImages.ServerFaile,
+        animationAsset: AppIconsLotit.ServerFaile,
       ));
 
       break;
@@ -31,27 +31,27 @@ apiErorrsDialog(Failure failur) {
       break;
     case StatusRquest.failure:
       Get.dialog(ErorrMasseageAnimation(
-        animationAsset: AppImages.Anlogin,
+        animationAsset: AppIconsLotit.Anlogin,
       ));
       break;
 
     case StatusRquest.offline:
       Get.dialog(ErorrMasseageAnimation(
-        animationAsset: AppImages.Offline,
+        animationAsset: AppIconsLotit.Offline,
       ));
       break;
 
     case StatusRquest.badRequest:
       // TODO: Handle this case.
       Get.dialog(ErorrMasseageAnimation(
-        animationAsset: AppImages.ServerFaile,
+        animationAsset: AppIconsLotit.ServerFaile,
       ));
       break;
 
     case StatusRquest.notfound:
       // TODO: Handle this case.
       Get.dialog(ErorrMasseageAnimation(
-        animationAsset: AppImages.Nodata,
+        animationAsset: AppIconsLotit.Nodata,
       ));
       break;
     case StatusRquest.notValidate:

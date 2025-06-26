@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:lottie/lottie.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
-import 'package:newhotelyemeni/core/consttint/images.dart';
+import 'package:newhotelyemeni/core/consttint/app_icons_lottet.dart';
 
 errorSnakbar(String title, String message) {
   Get.rawSnackbar(title: title, message: message, backgroundColor: Colors.red);
@@ -78,7 +78,7 @@ class ErrorDialog extends StatelessWidget {
             right: MediaQuery.of(context).size.width / 2 - 50,
             child: Lottie.asset(
               repeat: false,
-              AppImages.alert,
+              AppIconsLotit.alert,
               height: 100,
               width: 100,
               delegates: LottieDelegates(

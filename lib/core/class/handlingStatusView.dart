@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:newhotelyemeni/core/class/statusRquest.dart';
-import 'package:newhotelyemeni/core/consttint/images.dart';
+import 'package:newhotelyemeni/core/consttint/app_icons_lottet.dart';
 
 class HandlingStatusView extends StatelessWidget {
   StatusRquest statusRquest;
@@ -10,9 +10,9 @@ class HandlingStatusView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return statusRquest == StatusRquest.loading?
-    Center(child: Lottie.asset(AppImages.Loading),)
+    Center(child: Lottie.asset(AppIconsLotit.Loading),)
         :statusRquest == StatusRquest.offline?
-    Center(child: Lottie.asset(AppImages.Offline),)
+    Center(child: Lottie.asset(AppIconsLotit.Offline),)
     :statusRquest == StatusRquest.failure?
      Center(
         child: Column(
@@ -20,7 +20,7 @@ class HandlingStatusView extends StatelessWidget {
           children: [
             // Lottie Animation
             Lottie.asset(
-              AppImages.Nodata, // أضف ملف Lottie هنا
+              AppIconsLotit.Nodata, // أضف ملف Lottie هنا
               height: 200,
             ),
             SizedBox(height: 20),
