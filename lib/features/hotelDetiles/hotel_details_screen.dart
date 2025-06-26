@@ -84,46 +84,7 @@ class HotelDetailsScreen extends StatelessWidget {
   }
 
   void _showRatingDialog(BuildContext context) {
-    if (false) {
-      Get.dialog(
-        AlertDialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
-          title: Text(
-            'تسجيل الدخول مطلوب',
-            textAlign: TextAlign.right,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          content: Text(
-            'يجب عليك تسجيل الدخول أولاً لتتمكن من تقييم الفندق',
-            textAlign: TextAlign.right,
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Get.back(),
-              child: Text('إلغاء'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Get.back();
-                // هنا سيتم التوجيه إلى صفحة تسجيل الدخول
-                // Get.to(() => LoginScreen());
-              },
-              child: Text('تسجيل الدخول'),
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-      return;
-    }
+  
 
     double selectedRating = 0;
     Get.dialog(

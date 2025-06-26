@@ -8,6 +8,7 @@ import 'package:newhotelyemeni/features/celender/celender_controller.dart';
 import 'package:newhotelyemeni/features/celender/celender_screen.dart';
 import 'package:newhotelyemeni/features/numberOfGuests/number_of_guest_controller.dart';
 import 'package:newhotelyemeni/features/numberOfGuests/number_of_guests.dart';
+import 'package:newhotelyemeni/features/payment/chose_payment_screen.dart';
 import 'package:newhotelyemeni/features/rooms/room_hotel_details.dart';
 import 'package:newhotelyemeni/features/rooms/widget/room_card.dart';
 import 'package:newhotelyemeni/features/rooms/widget/room_filter_header.dart';
@@ -53,6 +54,9 @@ class RoomsHotel extends StatelessWidget {
                   price: 511,
                   onViewDetails: () {},
                   onShowOptions: () {},
+                  reservation: () {
+                    Get.to(() => ChosePaymentScreen());
+                  },
                 ),
               ),
             ),

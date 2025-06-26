@@ -9,13 +9,14 @@ class RoomCard extends StatelessWidget {
   final int price;
   final VoidCallback onViewDetails;
   final VoidCallback onShowOptions;
+  final VoidCallback reservation;
 
   const RoomCard({
     required this.title,
     required this.description,
     required this.price,
     required this.onViewDetails,
-    required this.onShowOptions,
+    required this.onShowOptions, required this.reservation,
   });
 
   @override
@@ -126,9 +127,7 @@ class RoomCard extends StatelessWidget {
                       ],
                     ),
                     InkWell(
-                      onTap: () {
-                        // tabController.animateTo(1);
-                      },
+                      onTap:reservation,
                       child: Container(
                         child: Container(
                           height: 40,
