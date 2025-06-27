@@ -1,9 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:newhotelyemeni/features/home/data/model/hotel_model.dart';
+import 'package:newhotelyemeni/features/home/data/hotel_modle.dart';
 
 class HotelCardView extends StatelessWidget {
-  final ModelHotel hotel;
+  final HotelsModle hotel;
+
   const HotelCardView({super.key, required this.hotel});
 
   @override
@@ -16,7 +17,11 @@ class HotelCardView extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           image: DecorationImage(
-            image: AssetImage(hotel.hotelImage!),
+            image: hotel.images!.isEmpty
+                ? NetworkImage(
+                    'https://yemenihotel.com/hotels_images/no-image.png')
+                : NetworkImage(hotel.images!.first.imageUrl!),
+            // image: AssetImage(hotel.images![0].imageUrl!),
             // image: NetworkImage("${AppLinks.rootImage}/hotel/$image"),
             fit: BoxFit.cover,
           ),
@@ -41,7 +46,7 @@ class HotelCardView extends StatelessWidget {
               //   height: 50,
               // ),
               Text(
-                hotel.hotelNamear!,
+                hotel.name!,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
@@ -59,7 +64,7 @@ class HotelCardView extends StatelessWidget {
                     width: 5,
                   ),
                   Text(
-                    hotel.addressCity!,
+                    hotel.city!,
                     style: TextStyle(
                       color: Colors.white70,
                       fontSize: 16,
@@ -69,7 +74,7 @@ class HotelCardView extends StatelessWidget {
                     width: 10,
                   ),
                   Text(
-                    '. ${hotel.addressStreet!}',
+                    '. ${hotel.address!}',
                     style: TextStyle(
                       color: Colors.white70,
                       fontSize: 16,
@@ -90,7 +95,7 @@ class HotelCardView extends StatelessWidget {
                       Icon(Icons.star_border, color: Colors.yellow, size: 18),
                       SizedBox(width: 5),
                       Text(
-                        hotel.hotelRating!.toString(),
+                        hotel.rating!.toString(),
                         style: TextStyle(
                           color: Colors.white70,
                           fontSize: 14,

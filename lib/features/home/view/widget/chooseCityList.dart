@@ -1,41 +1,41 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:newhotelyemeni/core/consttint/colors.dart';
+import 'package:newhotelyemeni/features/home/controller/home_page_controller.dart';
 
 class ChooseCityList extends StatefulWidget {
   final List<String> items;
   final String hintText;
+  final String cuntry;
   final IconData? suffixIcon;
   final IconData? itemsIcons;
+
   const ChooseCityList(
       {super.key,
       required this.items,
       required this.hintText,
       this.suffixIcon,
-      this.itemsIcons});
+      this.itemsIcons,
+      required this.cuntry});
 
   @override
   State<ChooseCityList> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<ChooseCityList> {
-  final List<String> items = [
-    'Item1',
-    'Item2',
-    'Item3',
-    'Item4',
-    'Item5',
-    'Item6',
-    'Item7',
-    'Item8',
-  ];
   String? selectedValue;
   bool isopen = false;
 
   @override
   Widget build(BuildContext context) {
+    // selectedValue = widget.hintText;
+    HomePageController controller = Get.find<HomePageController>();
     return DropdownButtonHideUnderline(
       child: DropdownButton2<String>(
         // barrierColor: Colors.white,
+
         onMenuStateChange: (isOpen) {
           print(isOpen);
           setState(() {
@@ -43,29 +43,29 @@ class _MyHomePageState extends State<ChooseCityList> {
           });
         },
         isExpanded: true,
-        hint: Row(
-          children: [
-            Icon(
-              widget.suffixIcon,
-              size: 18,
-              color: Colors.black,
-            ),
-            SizedBox(
-              width: 4,
-            ),
-            Expanded(
-              child: Text(
-                widget.hintText,
-                style: TextStyle(
-                  fontSize: 12,
-                  // fontWeight: FontWeight.bold,
-                  color: Colors.grey,
-                ),
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-          ],
-        ),
+        // hint: Row(
+        //   children: [
+        //     Icon(
+        //       widget.suffixIcon,
+        //       size: 20,
+        //       color: Colors.black,
+        //     ),
+        //     SizedBox(
+        //       width: 4,
+        //     ),
+        // Expanded(
+        //   child: Text(
+        //     widget.hintText,
+        //     style: TextStyle(
+        //       fontSize: 12,
+        //       // fontWeight: FontWeight.bold,
+        //       color: Colors.grey,
+        //     ),
+        //     overflow: TextOverflow.ellipsis,
+        //   ),
+        // ),
+        //   ],
+        // ),
         items: widget.items
             .map((String item) => DropdownMenuItem<String>(
                   value: item,
@@ -73,20 +73,22 @@ class _MyHomePageState extends State<ChooseCityList> {
                     children: [
                       Icon(
                         widget.itemsIcons,
-                        size: 20,
+                        size: 25,
                       ),
                       SizedBox(
                         width: 10,
                       ),
                       Text(
                         item,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          // fontWeight: FontWeight.bold,
-                          color: Colors.grey,
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.black,
                         ),
                         overflow: TextOverflow.ellipsis,
                       ),
+                      // Text(' ,'),
+                      // Text(widget.cuntry)
                     ],
                   ),
                 ))
@@ -95,6 +97,7 @@ class _MyHomePageState extends State<ChooseCityList> {
         onChanged: (String? value) {
           setState(() {
             selectedValue = value;
+            controller.getDataBy(filterData: {'city': value});
           });
         },
         buttonStyleData: ButtonStyleData(
@@ -103,11 +106,12 @@ class _MyHomePageState extends State<ChooseCityList> {
           padding: const EdgeInsets.only(left: 14, right: 14),
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(14),
+
+            // borderRadius: BorderRadius.circular(14),
 
             // color: Colors.redAccent,
           ),
-          elevation: 2,
+          elevation: 0,
         ),
         iconStyleData: IconStyleData(
           icon: Icon(

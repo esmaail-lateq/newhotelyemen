@@ -3,11 +3,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:newhotelyemeni/core/consttint/app_string.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
+import 'package:newhotelyemeni/features/home/view/widget/chooseCityList.dart';
 
 import 'package:newhotelyemeni/features/home/view/widget/custom_appbar_text_filed.dart';
 
 class CustomAppbar extends StatelessWidget {
-  const CustomAppbar({super.key});
+  final List<String> citys = [
+    "صنعاء",
+    "الحديدة",
+    "عدن",
+    "ذمار",
+    "تعز",
+    "صعدة",
+    "اب"
+  ];
+  CustomAppbar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,29 +38,38 @@ class CustomAppbar extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 7.h),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.location_on_outlined,
-                        size: 30,
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        AppString.locationData,
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.black,
-                        ),
-                      ),
-                      Icon(
-                        Icons.keyboard_arrow_down_rounded,
-                        color: AppColors.black,
-                      ),
-                    ],
-                  ),
+
+                  ChooseCityList(
+                    itemsIcons: Icons.location_on,
+                    items: citys,
+                    hintText: 'صنعاء',
+                    cuntry: 'اليمن',
+                    suffixIcon: Icons.location_city_outlined,
+                  )
+
+                  // Row(
+                  //   children: [
+                  //     Icon(
+                  //       Icons.location_on_outlined,
+                  //       size: 30,
+                  //     ),
+                  //     SizedBox(
+                  //       width: 5,
+                  //     ),
+                  //     Text(
+                  //       AppString.locationData,
+                  // style: TextStyle(
+                  //   fontSize: 14.sp,
+                  //   fontWeight: FontWeight.bold,
+                  //   color: AppColors.black,
+                  // ),
+                  //     ),
+                  //     Icon(
+                  //       Icons.keyboard_arrow_down_rounded,
+                  //       color: AppColors.black,
+                  //     ),
+                  //   ],
+                  // ),
                 ],
               ),
               Container(

@@ -10,4 +10,5 @@ class AppLinksApi {
   static const String googleSignup = '$server/api/auth/google/token';
   static const String resetPassword = '$server/api/forgot-password';
   static const String userData = '$server/api/me';
+  static const String homePage = 'api/hotels/search';
 }

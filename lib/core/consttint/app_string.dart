@@ -15,7 +15,7 @@ class AppString {
   static const String price = "price";
   static const String readMore = "Read More";
   static const String addToCart = "Add To Cart";
-  static const String topHotelRate = "الاكثر تقييم";
+  static const String topHotelRate = "الاعلى تقييم";
   static const String topHotel = "افضل فنادق ";
   static const String topHotelService = " الافضل خدمة";
 }
