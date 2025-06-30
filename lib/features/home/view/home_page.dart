@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:newhotelyemeni/core/class/handlin_status_view.dart';
 import 'package:newhotelyemeni/core/class/shimmer%20effects/home_page_card_shimmer.dart';
 import 'package:newhotelyemeni/core/consttint/app_string.dart';
+import 'package:newhotelyemeni/features/allHotels/view/all_hotels_view.dart';
 
 import 'package:newhotelyemeni/features/favorite/favorites_controller.dart';
 
@@ -19,7 +20,6 @@ import 'package:newhotelyemeni/features/home/view/widget/custom_appbar.dart';
 
 import 'package:newhotelyemeni/features/home/view/widget/home_page_top_texts.dart';
 import 'package:newhotelyemeni/features/home/view/widget/hotel_card_view.dart';
-
 
 import 'package:newhotelyemeni/core/widget/fontandtext.dart';
 
@@ -112,6 +112,9 @@ class HomePage extends StatelessWidget {
                           children: <Widget>[
                             SizedBox(height: 20),
                             HomePageTopTexts(
+                              showall: () {
+                                Get.to(() => AllHotelsView());
+                              },
                               text: AppString.topHotelRate,
                             ),
                             SizedBox(

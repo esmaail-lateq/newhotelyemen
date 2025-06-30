@@ -7,6 +7,7 @@ import 'package:newhotelyemeni/core/servesies/myserves.dart';
 import 'package:newhotelyemeni/features/MyReservations/view/screen/my_reservation_screen.dart';
 import 'package:newhotelyemeni/features/MyReservations/view/screen/bookings_screen.dart';
 import 'package:newhotelyemeni/features/favorite/view/favorites_screen.dart';
+import 'package:newhotelyemeni/features/home/controller/citys_controller.dart';
 import 'package:newhotelyemeni/features/home/view/home_page.dart';
 import 'package:newhotelyemeni/features/setting/settingscreen.dart';
 
@@ -74,6 +75,8 @@ class HomeScreenController extends GetxController {
 
   @override
   void onInit() {
+    Get.put(CityController());
+
     // var step = myServices.sharedPreferences.getString('step');
     // if (step == null) {
     //   myServices.sharedPreferences.setString('step', '1');

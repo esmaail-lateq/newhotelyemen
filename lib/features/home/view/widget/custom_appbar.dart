@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/get_core.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 import 'package:newhotelyemeni/core/consttint/app_string.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
+import 'package:newhotelyemeni/core/function/city_bottom_sheet.dart';
+import 'package:newhotelyemeni/features/home/controller/citys_controller.dart';
 import 'package:newhotelyemeni/features/home/view/widget/chooseCityList.dart';
 
 import 'package:newhotelyemeni/features/home/view/widget/custom_appbar_text_filed.dart';
@@ -21,6 +26,7 @@ class CustomAppbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CityController cityController = Get.find<CityController>();
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.w),
       child: Column(
@@ -38,14 +44,47 @@ class CustomAppbar extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 7.h),
-
-                  ChooseCityList(
-                    itemsIcons: Icons.location_on,
-                    items: citys,
-                    hintText: 'صنعاء',
-                    cuntry: 'اليمن',
-                    suffixIcon: Icons.location_city_outlined,
+                  InkWell(
+                    onTap: () {
+                      showCitySelectorBottomSheet();
+                    },
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.location_on_outlined,
+                          size: 30,
+                          color: Colors.grey,
+                        ),
+                        SizedBox(
+                          width: 10.h,
+                        ),
+                        Obx(
+                          () {
+                            return Text(
+                              '${cityController.selectedCity.value} , اليمن',
+                              style: TextStyle(fontSize: 18),
+                            );
+                          },
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        Icon(
+                          Icons.keyboard_arrow_down_sharp,
+                          size: 25,
+                          color: Colors.grey,
+                        )
+                      ],
+                    ),
                   )
+
+                  // ChooseCityList(
+                  //   itemsIcons: Icons.location_on,
+                  //   items: citys,
+                  //   hintText: 'صنعاء',
+                  //   cuntry: 'اليمن',
+                  //   suffixIcon: Icons.location_city_outlined,
+                  // )
 
                   // Row(
                   //   children: [

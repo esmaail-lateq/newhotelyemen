@@ -26,4 +26,9 @@ class AppString {
   static const String ratiExelant = 'التقييم ممتاز ';
   static const String ratiGood = 'التقييم جيد ';
   static const String ratiBad = 'التقييم سيء ';
+  static const String showall = 'عرض الكل';
+  static const String hotelscity = 'فنادق  محافظة ';
+  static const String searchNearstHotle = 'البحث عن اقرب فندق';
+  static const String sortBy = 'رتب حسب';
+  static const String filterSchose = 'تصفية';
 }

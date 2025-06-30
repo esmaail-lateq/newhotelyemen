@@ -1,9 +1,98 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
+import 'package:newhotelyemeni/core/consttint/colors.dart';
 import 'package:newhotelyemeni/core/consttint/text_tthems.dart';
+import 'package:newhotelyemeni/features/allHotels/view/widget/all_hotels_appbar.dart';
 import 'package:newhotelyemeni/features/home/data/model/hotel_model.dart';
 
+class AllHotelsView extends StatelessWidget {
+  const AllHotelsView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+        child: Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(190.h),
+        child: Container(
+          decoration: BoxDecoration(
+              border:
+                  Border(bottom: BorderSide(color: Colors.grey, width: 0.3))),
+          // color: Colors.amber,
+          // margin: const EdgeInsets.only(bottom: 4),
+          child: Column(
+            children: [
+              AllHotelsAppbar(),
+              // SizedBox(
+              //   height: 10.h,
+              // ),
+            ],
+          ),
+        ),
+      ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              FavoritHotelCard(
+                hotel: ModelHotel(
+                    addressCity: 'صنعاء',
+                    addressCuntry: 'adsa',
+                    addressHotelid: 'asdsa',
+                    addressId: '1',
+                    addressStreet: 'شارع الستين',
+                    hotelDescription: 'askjxk',
+                    hotelId: '65',
+                    hotelImage: 'assets/images/test2.png',
+                    hotelName: 'ajhxs',
+                    hotelNamear: 'فايف استار',
+                    hotelRating: '4.5',
+                    hotelDescriptionar: 'khk',
+                    addressLat: '565',
+                    addressLong: '565'),
+              ),
+              FavoritHotelCard(
+                hotel: ModelHotel(
+                    addressCity: 'صنعاء',
+                    addressCuntry: 'adsa',
+                    addressHotelid: 'asdsa',
+                    addressId: '1',
+                    addressStreet: 'شارع الستين',
+                    hotelDescription: 'askjxk',
+                    hotelId: '65',
+                    hotelImage: 'assets/images/test2.png',
+                    hotelName: 'ajhxs',
+                    hotelNamear: 'فايف استار',
+                    hotelRating: '4.5',
+                    hotelDescriptionar: 'khk',
+                    addressLat: '565',
+                    addressLong: '565'),
+              ),
+              FavoritHotelCard(
+                hotel: ModelHotel(
+                    addressCity: 'صنعاء',
+                    addressCuntry: 'adsa',
+                    addressHotelid: 'asdsa',
+                    addressId: '1',
+                    addressStreet: 'شارع الستين',
+                    hotelDescription: 'askjxk',
+                    hotelId: '65',
+                    hotelImage: 'assets/images/test2.png',
+                    hotelName: 'ajhxs',
+                    hotelNamear: 'فايف استار',
+                    hotelRating: '4.5',
+                    hotelDescriptionar: 'khk',
+                    addressLat: '565',
+                    addressLong: '565'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ));
+  }
+}
 
 class FavoritHotelCard extends StatelessWidget {
   final ModelHotel hotel;
@@ -14,7 +103,7 @@ class FavoritHotelCard extends StatelessWidget {
     return InkWell(
       onTap: () {
         // Get.to(() => HotelDetailsScreen(hotel: hotel),arguments: {
-                                       
+
         //                                     "hotelId":hotel.hotelId
         //                                   });
         print('hootel taaped');
@@ -30,14 +119,14 @@ class FavoritHotelCard extends StatelessWidget {
             Stack(
               children: [
                 Container(
-                  height: 150.h,
+                  height: 250.h,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(15),
                     ),
                     image: DecorationImage(
                       image: AssetImage(hotel.hotelImage!),
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fill,
                     ),
                   ),
                 ),
@@ -152,46 +241,26 @@ class FavoritHotelCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  // SizedBox(height: 12),
-                  // Wrap(
-                  //   spacing: 8,
-                  //   runSpacing: 8,
-                  //   alignment: WrapAlignment.end,
-                  //   children: [
-                  //     for (var amenity in hotel['amenities'])
-                  //       Container(
-                  //         padding: EdgeInsets.symmetric(
-                  //           horizontal: 8,
-                  //           vertical: 4,
-                  //         ),
-                  //         decoration: BoxDecoration(
-                  //           color: Colors.blue.withOpacity(0.1),
-                  //           borderRadius:
-                  //               BorderRadius.circular(12),
-                  //         ),
-                  //         child: Text(
-                  //           amenity,
-                  //           style: TextStyle(
-                  //             color: Colors.blue,
-                  //             fontSize: 12,
-                  //           ),
-                  //         ),
-                  //       ),
-                  //   ],
-                  // ),
-                  // SizedBox(height: 16),
-                  // ElevatedButton(
-                  //   onPressed: () {
-                  //     // الانتقال إلى صفحة الحجز
-                  //   },
-                  //   child: Text('احجز الآن'),
-                  //   style: ElevatedButton.styleFrom(
-                  //     minimumSize: Size(double.infinity, 45),
-                  //     shape: RoundedRectangleBorder(
-                  //       borderRadius: BorderRadius.circular(10),
-                  //     ),
-                  //   ),
-                  // ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'السعر لليلة الواحدة',
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        'USD 458.0',
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.secundColor),
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),
