@@ -10,6 +10,8 @@ class TextThemsCustom {
       TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white);
   static const TextStyle font22WGreyBolde =
       TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.grey);
+  static const TextStyle font22LhgitGrey =
+      TextStyle(fontSize: 22, color: Color.fromARGB(255, 234, 233, 233));
   static const TextStyle font22PrimaryColorBolde = TextStyle(
       fontSize: 22, fontWeight: FontWeight.bold, color: AppColors.primaryColor);
   static const TextStyle font12GrayColor =

@@ -18,4 +18,12 @@ class AppString {
   static const String topHotelRate = "الاعلى تقييم";
   static const String topHotel = "افضل فنادق ";
   static const String topHotelService = " الافضل خدمة";
+  static const String hotileDitels = "معلومات الفندق";
+  static const String choseYourRoom = "اختر غرفتك";
+  static const String hotel = 'فندق ';
+  static const String hotelServes = 'الخدمات ';
+  static const String hotelDecribe = 'نبذه عن الفندق';
+  static const String ratiExelant = 'التقييم ممتاز ';
+  static const String ratiGood = 'التقييم جيد ';
+  static const String ratiBad = 'التقييم سيء ';
 }

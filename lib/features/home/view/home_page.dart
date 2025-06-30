@@ -11,15 +11,15 @@ import 'package:newhotelyemeni/features/favorite/favorites_controller.dart';
 
 import 'package:newhotelyemeni/features/home/controller/home_page_controller.dart';
 import 'package:newhotelyemeni/features/home/view/widget/home_card.dart';
+import 'package:newhotelyemeni/features/hotelDetiles/view/screen/hotel_details_screen_new.dart';
 import 'package:newhotelyemeni/features/user-profile/user_controller.dart';
 
 import 'package:newhotelyemeni/features/home/view/widget/chooseCityList.dart';
 import 'package:newhotelyemeni/features/home/view/widget/custom_appbar.dart';
-import 'package:newhotelyemeni/features/home/hotel_items.dart';
+
 import 'package:newhotelyemeni/features/home/view/widget/home_page_top_texts.dart';
 import 'package:newhotelyemeni/features/home/view/widget/hotel_card_view.dart';
-import 'package:newhotelyemeni/features/hotelDetiles/view/hotel_details_screen_new.dart';
-import 'package:newhotelyemeni/features/hotelDetiles/hotel_details_screen.dart';
+
 
 import 'package:newhotelyemeni/core/widget/fontandtext.dart';
 
@@ -129,7 +129,10 @@ class HomePage extends StatelessWidget {
                                           children: [
                                             GestureDetector(
                                               onTap: () {
-                                                Get.to(HotelDetailsScreenNew());
+                                                Get.to(HotelDetailsScreenNew(
+                                                  hotelsModle: controller
+                                                      .hoteldata[index],
+                                                ));
                                                 // Get.to(
                                                 //     HotelDetailsScreen(
                                                 //         hotel:

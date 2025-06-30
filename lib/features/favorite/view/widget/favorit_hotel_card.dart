@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newhotelyemeni/core/consttint/text_tthems.dart';
 import 'package:newhotelyemeni/features/home/data/model/hotel_model.dart';
-import 'package:newhotelyemeni/features/hotelDetiles/hotel_details_screen.dart';
+
 
 class FavoritHotelCard extends StatelessWidget {
   final ModelHotel hotel;
@@ -12,10 +12,10 @@ class FavoritHotelCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.to(() => HotelDetailsScreen(hotel: hotel),arguments: {
+        // Get.to(() => HotelDetailsScreen(hotel: hotel),arguments: {
                                        
-                                            "hotelId":hotel.hotelId
-                                          });
+        //                                     "hotelId":hotel.hotelId
+        //                                   });
         print('hootel taaped');
       },
       child: Card(

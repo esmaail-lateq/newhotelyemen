@@ -5,8 +5,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:newhotelyemeni/core/class/shimmer%20effects/map_bottom_sheet_shimmer.dart';
 import 'package:newhotelyemeni/core/class/statusRquest.dart';
-import 'package:newhotelyemeni/features/home/data/model/hotel_model.dart';
-import 'package:newhotelyemeni/features/hotelDetiles/hotel_details_screen.dart';
+
 import 'package:newhotelyemeni/features/hotelsLocations/controller/helper_class.dart';
 import 'package:newhotelyemeni/features/hotelsLocations/controller/mapBox_actions_controller.dart';
 
@@ -122,11 +121,11 @@ class MapBottomSheet extends GetView<MapboxActionsController> {
                         if (kDebugMode) {
                           print(controller.routDataReault!['routes'][0]);
                         }
-                        Get.to(
-                            () => HotelDetailsScreen(
-                                  hotel: ModelHotel(hotelName: hotelName),
-                                ),
-                            arguments: {"cateogry": [], "hotelId": '1'});
+                        // Get.to(
+                        //     () => HotelDetailsScreen(
+                        //           hotel: ModelHotel(hotelName: hotelName),
+                        //         ),
+                        //     arguments: {"cateogry": [], "hotelId": '1'});
                       },
                       child: _customChip(Icons.play_arrow, 'التفاصيل والحجز')),
                 ],

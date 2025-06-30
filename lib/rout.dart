@@ -10,7 +10,7 @@ import 'package:newhotelyemeni/features/auth/onboarder_auth/onboader_screen.dart
 import 'package:newhotelyemeni/features/auth/signup/signup.dart';
 import 'package:newhotelyemeni/features/auth/success_signup.dart';
 import 'package:newhotelyemeni/features/auth/verify_email/verfiy_signup.dart';
-import 'package:newhotelyemeni/features/hotelDetiles/hotel_details_screen.dart';
+
 import 'package:newhotelyemeni/features/setting/settingscreen.dart';
 import 'package:newhotelyemeni/features/wellcome.dart';
 import 'package:newhotelyemeni/features/setting/aboutscreen.dart';

@@ -1,12 +1,16 @@
 import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
+import 'package:newhotelyemeni/core/consttint/app_string.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
 import 'package:newhotelyemeni/core/consttint/text_tthems.dart';
+import 'package:newhotelyemeni/features/home/data/hotel_modle.dart';
 import 'package:newhotelyemeni/features/hotelDetiles/view/widget/small_loaction_map.dart';
 
 class HotleInformation extends StatelessWidget {
   final TabController tabController;
-  const HotleInformation({super.key, required this.tabController});
+  final HotelsModle hotelsModle;
+  const HotleInformation(
+      {super.key, required this.tabController, required this.hotelsModle});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +31,7 @@ class HotleInformation extends StatelessWidget {
                 color: AppColors.text4,
                 borderRadius: BorderRadius.circular(12)),
             child: Text(
-              'اختر غرفتك ',
+              AppString.choseYourRoom,
               style: TextStyle(color: Colors.white),
             ),
           ),
@@ -49,14 +53,19 @@ class HotleInformation extends StatelessWidget {
                       border: Border.all(color: Colors.grey, width: 0.5)),
                   child: Column(
                     children: [
-                      Container(height: 150, child: SmallLoactionMap()),
+                      Container(
+                          height: 150,
+                          child: SmallLoactionMap(
+                            hotelsModle: hotelsModle,
+                          )),
                       Container(
                           // height: 150,
                           child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Icon(Icons.location_on_outlined),
-                          Text('اليمن صنعاء شارع الستين')
+                          Text(
+                              '${hotelsModle.country!} _ ${hotelsModle.city!} _ ${hotelsModle.address!}')
                         ],
                       )),
                     ],
@@ -67,7 +76,7 @@ class HotleInformation extends StatelessWidget {
               Container(
                   alignment: Alignment.centerRight,
                   child: Text(
-                    'الخدمات',
+                    AppString.hotelServes,
                     style: TextThemsCustom.font22BlackBolde,
                   )),
               SizedBox(
@@ -104,7 +113,7 @@ class HotleInformation extends StatelessWidget {
               Container(
                   alignment: Alignment.centerRight,
                   child: Text(
-                    'نبذه عن الفندق',
+                    AppString.hotelDecribe,
                     style: TextThemsCustom.font22BlackBolde,
                   )),
               SizedBox(
@@ -117,12 +126,7 @@ class HotleInformation extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(color: Colors.grey, width: 0.5)),
                 child: ExpandableText(
-                  '''
-      دم فندق شانغريلا البوسفور، إسطنبول ملاذا أنيڤا ى الواجهة البحرية في قلب منطقة بشيكتاش. يطل ذا الفندق الفاخر على المناظر الخلابة لمضيق بوسفور، ويقع على مسافة قصيرة سيرا على الاقدام ن قصر دولمة بهجة وقصر تشيران. يتميز الفندق زيج راق من الفخامة الوروبية والضيافة الاسيوية عكس ذلك في تصاميمه الداخلية النبقة وخدماته ستثنائية.
-       ـضمن بعض أماكن الإقامة شرفات خاصة توفر للالات خلابة على مضيق البوسفور، بينما تم تصميم ميع الغرف لضمان الراحة بأثاث فاخر. يمكن للضيوف استمتاع بتجارب طعام متنوعة، تشمل المأكولات صينية الاصيلة والنكهات التركية التقليدية. كما يوفر سبا الموجود في الفندق علاجات متجددة للحيوية، إلى انب مسبح داخلي ومركز لياقة بدنية مجهز بالكامل
-       صم الفندق 186 غرفة فاخرة، بالإضافة إلى مساحات رنة لاستضافة الفعاليات، سواء كانت اجتماعات عمل مناسبات خاصة. سواء كان الهدف استكشاف المعالم قريبة أو الاسترخاء في أجواء فاخرة، يضمن فندق
-      
-      ''',
+                  hotelsModle.description!,
                   expandText: 'عرض المزيد',
                   collapseText: 'اخفاء',
                   maxLines: 4,
@@ -135,6 +139,7 @@ class HotleInformation extends StatelessWidget {
                 height: 20,
               ),
               Container(
+                // margin: EdgeInsets.only(bottom: 100),
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
@@ -147,6 +152,9 @@ class HotleInformation extends StatelessWidget {
                         'lug,lhj odkfgldfglkg dfkldfkg lkgldk lkdflkdsljd fg'),
                   ],
                 ),
+              ),
+              SizedBox(
+                height: 110,
               )
             ],
           ),

@@ -67,6 +67,7 @@ class SignUpControllerImp extends SignUpController {
 
             Get.back();
             userPreferences.saveUserData(data['data']);
+            
             successSnakbar('نجاح', 'تم انشاء الحاساب وارسال رابط التاكيد');
             Get.toNamed(RoutName.verifyEmail,
                 arguments: {'email': email.text, 'who': 'sign'});

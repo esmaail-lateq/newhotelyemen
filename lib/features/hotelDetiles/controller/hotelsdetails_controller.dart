@@ -1,12 +1,11 @@
 import 'package:get/get.dart';
 import 'package:newhotelyemeni/core/class/statusRquest.dart';
 import 'package:newhotelyemeni/core/function/handling.dart';
-import 'package:newhotelyemeni/features/home/data/model/catogry_model.dart';
-import 'package:newhotelyemeni/features/hotelDetiles/servesView_data.dart';
+
 
 class HotelsDetailsController extends GetxController {
   late List cateData = [];
-  ServesViewData servesViewData = ServesViewData(Get.find());
+  // ServesViewData servesViewData = ServesViewData(Get.find());
   StatusRquest statusRquest = StatusRquest.nune;
   late String hotelid;
   List serves = [];
@@ -15,7 +14,7 @@ class HotelsDetailsController extends GetxController {
     print("dfgfdsgdfsgsdfgdsfgsdfgsdfg");
     statusRquest = StatusRquest.loading;
     update();
-    var response = await servesViewData.postData(hotelid);
+    var response = {};
     print("dfgfdsgdfsgsdfgdsfgsdfgsdfg");
     statusRquest = handling(response);
     update();

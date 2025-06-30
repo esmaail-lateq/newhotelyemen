@@ -1,10 +1,11 @@
 class SharedreferncesKeys {
-  static String name = 'name';
-  static String email = 'email';
-  static String id = 'id';
-  static String phoneNumber = 'phone_number';
-  static String role = 'role';
-  static String token = 'token';
-  static String step = 'step';
-  static String virefy = 'virefy';
+  static const String name = 'name';
+  static const String email = 'email';
+  static const String id = 'id';
+  static const String phoneNumber = 'phone_number';
+  static const String role = 'role';
+  static const String token = 'token';
+  static const String step = 'step';
+  static  const String virefy = 'virefy';
+  static const String city = 'city';
 }

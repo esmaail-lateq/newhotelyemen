@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
+import 'package:newhotelyemeni/core/function/user_city_location_mang.dart';
 import 'package:newhotelyemeni/features/home/controller/home_page_controller.dart';
 
 class ChooseCityList extends StatefulWidget {
@@ -26,6 +27,13 @@ class ChooseCityList extends StatefulWidget {
 
 class _MyHomePageState extends State<ChooseCityList> {
   String? selectedValue;
+  @override
+  void initState() {
+    selectedValue = getUserCity();
+
+    super.initState();
+  }
+
   bool isopen = false;
 
   @override
@@ -97,6 +105,7 @@ class _MyHomePageState extends State<ChooseCityList> {
         onChanged: (String? value) {
           setState(() {
             selectedValue = value;
+            setUserCity(value!);
             controller.getDataBy(filterData: {'city': value});
           });
         },

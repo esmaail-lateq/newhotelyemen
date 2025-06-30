@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
+import 'package:newhotelyemeni/core/consttint/app_string.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
-import 'package:newhotelyemeni/core/consttint/text_tthems.dart';
-// import 'package:newhotelyemeni/features/MyReservations/booking_screen.dart';
-import 'package:newhotelyemeni/features/home/data/model/hotel_model.dart';
-import 'package:newhotelyemeni/features/hotelDetiles/view/hotel_information.dart';
+import 'package:newhotelyemeni/features/home/data/hotel_modle.dart';
+import 'package:newhotelyemeni/features/hotelDetiles/view/screen/hotel_information.dart';
 import 'package:newhotelyemeni/features/rooms/rooms_hotel.dart';
 import 'package:newhotelyemeni/features/hotelDetiles/view/widget/cutom_appbar.dart';
-import 'package:newhotelyemeni/features/hotelDetiles/view/widget/small_loaction_map.dart';
 import 'package:newhotelyemeni/features/hotelDetiles/view/widget/top_page_section.dart';
-import 'package:newhotelyemeni/features/hotelDetiles/hotel_details_screen.dart';
-import 'package:expandable_text/expandable_text.dart';
 
 class HotelDetailsScreenNew extends StatefulWidget {
-  const HotelDetailsScreenNew({super.key});
+  final HotelsModle hotelsModle;
+  const HotelDetailsScreenNew({super.key, required this.hotelsModle});
 
   @override
   State<HotelDetailsScreenNew> createState() => _DetailScreenState();
@@ -44,61 +40,13 @@ class _DetailScreenState extends State<HotelDetailsScreenNew>
     }
   }
 
-  final List<ModelHotel> hoteldata = [
-    ModelHotel(
-        addressCity: 'صنعاء',
-        addressCuntry: 'adsa',
-        addressHotelid: 'asdsa',
-        addressId: '1',
-        addressStreet: 'شارع الستين',
-        hotelDescription: 'askjxk',
-        hotelId: '65',
-        hotelImage: 'assets/images/test2.png',
-        hotelName: 'ajhxs',
-        hotelNamear: 'فايف استار',
-        hotelRating: '4.5',
-        hotelDescriptionar: 'khk',
-        addressLat: '565',
-        addressLong: '565'),
-    ModelHotel(
-        addressCity: 'صنعاء',
-        addressCuntry: 'adsa',
-        addressHotelid: 'asdsa',
-        addressId: '1',
-        addressStreet: 'جولة عمران',
-        hotelDescription: 'askjxk',
-        hotelId: '65',
-        hotelImage: 'assets/images/test7.png',
-        hotelName: 'ajhxs',
-        hotelNamear: 'فندق عمران',
-        hotelRating: '4.5',
-        hotelDescriptionar: 'khk',
-        addressLat: '565',
-        addressLong: '565'),
-    ModelHotel(
-        addressCity: 'صنعاء',
-        addressCuntry: 'adsa',
-        addressHotelid: 'asdsa',
-        addressId: '1',
-        addressStreet: 'حدة',
-        hotelDescription: 'askjxk',
-        hotelId: '65',
-        hotelImage: 'assets/images/test6.webp',
-        hotelName: 'ajhxs',
-        hotelNamear: 'فندق حدة',
-        hotelRating: '4.5',
-        hotelDescriptionar: 'khk',
-        addressLat: '565',
-        addressLong: '565'),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(150),
-            child: buildCustomAppBar('فندق فايف استار')),
+            child: BuildCustomAppBar(hotelName: widget.hotelsModle.name!)),
         body: NestedScrollView(
           controller: _scrollController,
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
@@ -115,8 +63,10 @@ class _DetailScreenState extends State<HotelDetailsScreenNew>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // buildCustomAppBar('فندق فايف استار'),
-                      buildImageSlider(),
-                      buildHotelInfo(),
+                      BuildImageSlider(
+                        hotleData: widget.hotelsModle,
+                      ),
+                      buildHotelInfo(double.parse(widget.hotelsModle.rating!)),
                     ]),
               ),
               pinned: false,
@@ -139,9 +89,9 @@ class _DetailScreenState extends State<HotelDetailsScreenNew>
                   dividerColor: Colors.transparent,
                   tabs: const [
                     Tab(
-                      text: "معلومات الفندق",
+                      text: AppString.hotileDitels,
                     ),
-                    Tab(text: "اختر غرفتك"),
+                    Tab(text: AppString.choseYourRoom),
                   ],
                 ),
               ),
@@ -155,6 +105,7 @@ class _DetailScreenState extends State<HotelDetailsScreenNew>
               // ),
               HotleInformation(
                 tabController: _tabController,
+                hotelsModle: widget.hotelsModle,
               ),
               RoomsHotel(),
 

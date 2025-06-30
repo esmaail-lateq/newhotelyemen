@@ -11,10 +11,12 @@ import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart'
         Point,
         PointAnnotationOptions,
         Position;
+import 'package:newhotelyemeni/features/home/data/hotel_modle.dart';
 // import 'package:mapbox_map_flutter/mapbox_map_flutter.dart';
 
 class SmallLoactionMap extends StatefulWidget {
-  const SmallLoactionMap({super.key});
+  final HotelsModle hotelsModle;
+  const SmallLoactionMap({super.key, required this.hotelsModle});
 
   @override
   State<SmallLoactionMap> createState() => _LocationMapState();
@@ -58,7 +60,7 @@ class _LocationMapState extends State<SmallLoactionMap> {
       (value) {
         value?.create(PointAnnotationOptions(
             geometry: Point(coordinates: Position(44.1910, 15.394)),
-            textField: "فايف استار",
+            textField:widget.hotelsModle.name,
             textOffset: [0.0, 1.0],
             textColor: Colors.black.value,
             iconSize: 2.5,
@@ -113,7 +115,7 @@ class _LocationMapState extends State<SmallLoactionMap> {
       height: 300,
       child: MapWidget(
         cameraOptions: CameraOptions(
-          center: Point(coordinates: Position(44.1910, 15.394)),
+          center: Point(coordinates: Position(double.parse(widget.hotelsModle.longitude!),double.parse(widget.hotelsModle.latitude!))),
           zoom: 14.0,
         ),
 
