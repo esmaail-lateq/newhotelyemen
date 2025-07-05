@@ -31,4 +31,8 @@ class AppString {
   static const String searchNearstHotle = 'البحث عن اقرب فندق';
   static const String sortBy = 'رتب حسب';
   static const String filterSchose = 'تصفية';
+  static const String nightPriceRange = "متوسط السعر لليلة الواحدة ";
+  static const String catagore = "التصنيف";
+  static const String showFilterResult = "عرض الفنادق";
+  static const String rating = 'التقييم';
 }

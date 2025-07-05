@@ -50,6 +50,6 @@ class CityController extends GetxController {
     setUserCity(city);
     selectedCity.value = city;
     homePageController.getDataBy(filterData: {'city': city});
-    Get.back(); // يغلق البوتم شيت
+    Get.back(); 
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 
@@ -11,6 +12,8 @@ import 'package:newhotelyemeni/features/home/controller/citys_controller.dart';
 import 'package:newhotelyemeni/features/home/view/widget/chooseCityList.dart';
 
 import 'package:newhotelyemeni/features/home/view/widget/custom_appbar_text_filed.dart';
+import 'package:newhotelyemeni/features/hotelsFilter/widget/category_filter_chips.dart';
+import 'package:newhotelyemeni/features/hotelsFilter/widget/sort_hotles_bottom_sheet.dart';
 
 class AllHotelsAppbar extends StatelessWidget {
   final List<String> citys = [
@@ -86,23 +89,34 @@ class AllHotelsAppbar extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                children: [
-                  Icon(Icons.sort_outlined),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Text(AppString.sortBy)
-                ],
+              InkWell(
+                onTap: () {
+                  Get.bottomSheet(SortBottomSheet());
+                },
+                child: Row(
+                  children: [
+                    Icon(Icons.sort_outlined),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Text(AppString.sortBy)
+                  ],
+                ),
               ),
-              Row(
-                children: [
-                  Icon(Icons.filter_alt_outlined),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Text(AppString.filterSchose)
-                ],
+              InkWell(
+                onTap: () {
+                  Get.bottomSheet(CategoryFilterChips(),
+                      isScrollControlled: true);
+                },
+                child: Row(
+                  children: [
+                    Icon(Icons.filter_alt_outlined),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Text(AppString.filterSchose)
+                  ],
+                ),
               ),
 
               // Column(

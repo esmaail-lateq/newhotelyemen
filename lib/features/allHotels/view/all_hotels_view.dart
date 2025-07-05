@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/utils.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
 import 'package:newhotelyemeni/core/consttint/text_tthems.dart';
 import 'package:newhotelyemeni/features/allHotels/view/widget/all_hotels_appbar.dart';
 import 'package:newhotelyemeni/features/home/data/model/hotel_model.dart';
+import 'package:newhotelyemeni/features/hotelsFilter/controller/hotels_filter_controler.dart';
+import 'package:newhotelyemeni/features/hotelsFilter/widget/category_filter_chips.dart';
 
 class AllHotelsView extends StatelessWidget {
   const AllHotelsView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Get.put(HotelsFilterControler());
     return SafeArea(
         child: Scaffold(
       appBar: PreferredSize(
@@ -35,6 +40,7 @@ class AllHotelsView extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              // CategoryFilterChips(),
               FavoritHotelCard(
                 hotel: ModelHotel(
                     addressCity: 'صنعاء',
