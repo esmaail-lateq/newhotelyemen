@@ -1,15 +1,12 @@
 import 'package:dartz/dartz.dart';
-
 import 'package:get/get.dart';
 import 'package:newhotelyemeni/core/class/failer.dart';
 import 'package:newhotelyemeni/core/class/statusRquest.dart';
-import 'package:newhotelyemeni/core/function/handling.dart';
 import 'package:newhotelyemeni/core/function/user_city_location_mang.dart';
+import 'package:newhotelyemeni/features/home/data/home_data.dart';
 import 'package:newhotelyemeni/features/home/data/hotel_modle.dart';
 
-import 'package:newhotelyemeni/features/home/data/home_data.dart';
-
-class HomePageController extends GetxController {
+class AllHotelsController extends GetxController {
   HomeData homeData = HomeData(Get.find());
 
   final List<HotelsModle> hoteldata = [];
@@ -23,7 +20,7 @@ class HomePageController extends GetxController {
   //   update();
   // }
 
-  Future<void> getDataBy({Map<String, dynamic>? filterData}) async {
+  Future<void> filterData({Map<String, dynamic>? filterData}) async {
     _prepareForFetch();
     print(filterData);
 
@@ -36,6 +33,10 @@ class HomePageController extends GetxController {
 
     update();
   }
+
+  // Future<void> refresh() async {
+  //   await filterData();
+  // }
 
   // getHotelItems(String cateo) async {
   //   hotelitems.clear();
@@ -75,12 +76,6 @@ class HomePageController extends GetxController {
         statusRquest = StatusRquest.success;
       },
     );
-  }
-
-  Future<void> refresh() async {
-    // await getDataBy();
-    print(';');
-    return Future.delayed(const Duration(seconds: 5));
   }
 
   void _handleError(dynamic error) {
@@ -130,8 +125,9 @@ class HomePageController extends GetxController {
 
   @override
   void onInit() {
+    filterData(filterData: {'city': getUserCity()});
     // setUserCity('صنعاء');
-    getDataBy(filterData: {'city': getUserCity()});
+    // getDataBy(filterData: {'city': getUserCity()});
     super.onInit();
   }
 }

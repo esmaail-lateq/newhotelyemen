@@ -108,57 +108,65 @@ class HomePage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            SizedBox(height: 20),
-                            HomePageTopTexts(
-                              showall: () {
-                                Get.to(() => AllHotelsView());
-                              },
-                              text: AppString.topHotelRate,
-                            ),
-                            SizedBox(
-                                // width: ,
-                                height: MediaQuery.of(context).size.height / 4,
-                                child: HandlinStatusView(
-                                    statusRquest: controller.statusRquest,
-                                    widget: ListView.builder(
-                                      scrollDirection: Axis.horizontal,
-                                      itemCount: controller.hoteldata.length,
-                                      itemBuilder: (context, index) {
-                                        return Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          children: [
-                                            GestureDetector(
-                                              onTap: () {
-                                                Get.to(HotelDetailsScreenNew(
-                                                  hotelsModle: controller
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              SizedBox(height: 20),
+                              HomePageTopTexts(
+                                showall: () {
+                                  Get.to(() => AllHotelsView());
+                                },
+                                text: AppString.topHotelRate,
+                              ),
+                              SizedBox(
+                                  // width: ,
+                                  height:
+                                      MediaQuery.of(context).size.height / 4,
+                                  child: HandlinStatusView(
+                                      // onRefresh: controller.refresh,
+                                      statusRquest: controller.statusRquest,
+                                      widget: ListView.builder(
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount: controller.hoteldata.length,
+                                        itemBuilder: (context, index) {
+                                          return Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              GestureDetector(
+                                                onTap: () {
+                                                  Get.to(HotelDetailsScreenNew(
+                                                    hotelsModle: controller
+                                                        .hoteldata[index],
+                                                  ));
+                                                  // Get.to(
+                                                  //     HotelDetailsScreen(
+                                                  //         hotel:
+                                                  //             controller.hoteldata[index]),
+                                                  //     arguments: {
+                                                  //       "cateogry": controller.servicesData,
+                                                  //       "hotelId": controller
+                                                  //           .hoteldata[index].hotelId
+                                                  //     });
+                                                },
+                                                child: HotelCardView(
+                                                  hotel: controller
                                                       .hoteldata[index],
-                                                ));
-                                                // Get.to(
-                                                //     HotelDetailsScreen(
-                                                //         hotel:
-                                                //             controller.hoteldata[index]),
-                                                //     arguments: {
-                                                //       "cateogry": controller.servicesData,
-                                                //       "hotelId": controller
-                                                //           .hoteldata[index].hotelId
-                                                //     });
-                                              },
-                                              child: HotelCardView(
-                                                hotel:
-                                                    controller.hoteldata[index],
+                                                ),
                                               ),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    ),
-                                    shimmerWidget: HomePageCardShimmer())),
-                            SizedBox(height: 20),
-                          ],
-                        ),
+                                            ],
+                                          );
+                                        },
+                                      ),
+                                      shimmerWidget: 
+                                      ListView.builder(
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount: 3,
+                                        itemBuilder: (context, index) =>
+                                            HomePageCardShimmer(),
+                                      )
+                                      )),
+                              SizedBox(height: 20),
+                            ]),
                         // Column(
                         //   crossAxisAlignment: CrossAxisAlignment.start,
                         //   children: <Widget>[

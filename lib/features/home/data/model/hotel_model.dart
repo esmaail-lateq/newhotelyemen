@@ -15,8 +15,9 @@ class ModelHotel {
   String? addressLat;
   String? addressLong;
   String? addressHotelid;
+  String? serves;
 
-  ModelHotel({this.hotelId, this.hotelName, this.hotelNamear, this.hotelDescription, this.hotelDescriptionar, this.hotelRating, this.hotelImage, this.managerId, this.addressId, this.addressCuntry, this.addressCity, this.addressStreet, this.addressLat, this.addressLong, this.addressHotelid});
+  ModelHotel({this.hotelId, this.hotelName, this.hotelNamear, this.hotelDescription, this.hotelDescriptionar, this.hotelRating, this.hotelImage, this.managerId, this.addressId, this.addressCuntry, this.addressCity, this.addressStreet, this.addressLat, this.addressLong, this.addressHotelid,this.serves});
 
   ModelHotel.fromJson(Map<String, dynamic> json) {
     hotelId = json["hotel_id"];
@@ -34,6 +35,7 @@ class ModelHotel {
     addressLat = json["address_lat"];
     addressLong = json["address_long"];
     addressHotelid = json["address_hotelid"];
+    serves = json["address_hotelid"];
   }
 
   Map<String, dynamic> toJson() {

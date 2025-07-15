@@ -35,4 +35,5 @@ class AppString {
   static const String catagore = "التصنيف";
   static const String showFilterResult = "عرض الفنادق";
   static const String rating = 'التقييم';
+  static const String noService = 'لايوجد خدمات';
 }

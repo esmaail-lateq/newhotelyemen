@@ -14,6 +14,7 @@ class HotelsModle {
   int? isVerified;
   String? createdAt;
   String? updatedAt;
+  String? services;
   List? rooms;
   List<Images>? images;
 
@@ -33,6 +34,7 @@ class HotelsModle {
       this.isVerified,
       this.createdAt,
       this.updatedAt,
+      this.services,
       this.rooms,
       this.images});
 
@@ -53,6 +55,7 @@ class HotelsModle {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     rooms = json['rooms'];
+    services = json['services'];
     
 
     // if (json['rooms'] != null) {
@@ -86,6 +89,7 @@ class HotelsModle {
     data['is_verified'] = this.isVerified;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
+    data['services'] = this.services;
     if (this.rooms != null) {
       data['rooms'] = this.rooms!.map((v) => v.toJson()).toList();
     }

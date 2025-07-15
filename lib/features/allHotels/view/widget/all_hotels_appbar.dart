@@ -41,7 +41,12 @@ class AllHotelsAppbar extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Icon(Icons.arrow_back),
+              InkWell(
+                onTap: () {
+                  Get.back();
+                },
+                child: Icon(Icons.arrow_back),
+              ),
               Obx(
                 () {
                   return Container(

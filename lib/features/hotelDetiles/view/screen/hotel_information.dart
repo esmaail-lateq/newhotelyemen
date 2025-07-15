@@ -1,9 +1,11 @@
 import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:newhotelyemeni/core/consttint/app_string.dart';
 import 'package:newhotelyemeni/core/consttint/colors.dart';
 import 'package:newhotelyemeni/core/consttint/text_tthems.dart';
 import 'package:newhotelyemeni/features/home/data/hotel_modle.dart';
+import 'package:newhotelyemeni/features/hotelDetiles/controller/hotelsdetails_controller.dart';
 import 'package:newhotelyemeni/features/hotelDetiles/view/widget/small_loaction_map.dart';
 
 class HotleInformation extends StatelessWidget {
@@ -14,6 +16,11 @@ class HotleInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    HotelsDetailsController controller = Get.put(HotelsDetailsController());
+    List<String> serviceList = hotelsModle.services == null
+        ? []
+        : hotelsModle.services!.split(',').map((e) => e.trim()).toList();
+
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: InkWell(
@@ -82,31 +89,41 @@ class HotleInformation extends StatelessWidget {
               SizedBox(
                 height: 5,
               ),
-              Container(
-                  // width: 200,
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: Colors.grey, width: 0.5)),
-                  child: GridView(
-                    physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        mainAxisExtent: 30, crossAxisCount: 2),
-                    children: [
-                      buildHotelService(Icons.wifi, 'انترنت'),
-                      buildHotelService(Icons.pool_rounded, 'مسبح'),
-                      buildHotelService(
-                          Icons.local_parking_outlined, 'موقف سيارات'),
-                      buildHotelService(Icons.restaurant, 'مصطعم'),
-                      buildHotelService(
-                          Icons.fastfood_rounded, 'الطعام والشراب'),
-                      buildHotelService(Icons.shop_2_outlined, 'اسواق محلية'),
-                      buildHotelService(
-                          Icons.family_restroom_outlined, 'مناسب للعائلة'),
-                      // buildHotelService(Icons.wifi, 'انترنت'),
-                    ],
-                  )),
+              serviceList.isEmpty
+                  ? Text(AppString.noService)
+                  : Container(
+                      // width: 200,
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Colors.grey, width: 0.5)),
+                      child: GridView(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            mainAxisExtent: 30, crossAxisCount: 2),
+                        children: serviceList.map(
+                          (e) {
+                            final info = controller.serviceInfo[e];
+                            if (info == null) return SizedBox();
+                            return buildHotelService(
+                                info['icon'], info['lable']);
+                          },
+                        ).toList(),
+                        // [
+                        //   buildHotelService(Icons.wifi, 'انترنت'),
+                        //   buildHotelService(Icons.pool_rounded, 'مسبح'),
+                        //   buildHotelService(
+                        //       Icons.local_parking_outlined, 'موقف سيارات'),
+                        //   buildHotelService(Icons.restaurant, 'مصطعم'),
+                        //   buildHotelService(
+                        //       Icons.fastfood_rounded, 'الطعام والشراب'),
+                        //   buildHotelService(Icons.shop_2_outlined, 'اسواق محلية'),
+                        //   buildHotelService(
+                        //       Icons.family_restroom_outlined, 'مناسب للعائلة'),
+                        //   // buildHotelService(Icons.wifi, 'انترنت'),
+                        // ],
+                      )),
               SizedBox(
                 height: 15,
               ),
@@ -163,7 +180,7 @@ class HotleInformation extends StatelessWidget {
     );
   }
 
-  Widget buildHotelService(IconData icon, String servic) {
+  Widget buildHotelService(var icon, var servic) {
     return Row(
       children: [
         Icon(
